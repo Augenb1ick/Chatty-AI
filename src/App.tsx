@@ -16,12 +16,12 @@ const App: React.FC = () => {
     listening,
     resetTranscript,
     browserSupportsSpeechRecognition,
+    isMicrophoneAvailable,
   } = useSpeechRecognition();
 
   useEffect(() => {
     if (!listening) {
         setFinalText(transcript);
-        console.log(finalText)
       }
   },[transcript, listening, finalText])
 
@@ -29,22 +29,19 @@ const App: React.FC = () => {
   if (!browserSupportsSpeechRecognition) {
     return <span>Ваш браузер не поддерживает распознавание речи</span>;
   }
-  // так можно сохранять результат отработки распознования
-  
-  
-  
-  
 
-
-  // пример использования в риал-тайм
+  // пример использования в риал-тайм 
   return (
     <>
       <div>
-        <p>Microphone: {listening ? 'on' : 'off'}</p>
-        <button onClick={SpeechRecognition.startListening}>Start</button>
-        <button onClick={SpeechRecognition.stopListening}>Stop</button>
-        <button onClick={resetTranscript}>Reset</button>
-        <p>{transcript}</p>
+        <h1>{!isMicrophoneAvailable && 'Нужно разрешить использования микрофона'}</h1>
+        <p>Задайте вопрос голосом</p>
+        {listening ? 'Идет запись: 🎙' : ''}
+        <br />
+        <button onClick={()=> {SpeechRecognition.startListening()}}>Запись</button>
+        <button onClick={()=> {SpeechRecognition.stopListening()}}>Остановить</button>
+        <button onClick={resetTranscript}>Сбросить</button>
+        <p>{transcript && `Ваш вопрос: ${transcript}`}</p>
       </div>
       <Chatbot textFromVoice={finalText} />
     </>

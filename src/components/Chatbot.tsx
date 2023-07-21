@@ -9,7 +9,7 @@ const Chatbot: FC<ChatbotProps> = ({ textFromVoice }) => {
   const [apiResponse, setApiResponse] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const apiKey = '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';
+  const apiKey = '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';
   const APIBody = {
       "model": "gpt-3.5-turbo",
       "messages": [{"role": "user", "content": prompt ? prompt : textFromVoice }],
@@ -36,7 +36,6 @@ const Chatbot: FC<ChatbotProps> = ({ textFromVoice }) => {
     }).then((data) => {
       return data.json();
     }).then((data) => {
-      console.log(data);
       setApiResponse(data.choices[0].message.content); 
     }).finally(() => {setLoading(false)})
   }
