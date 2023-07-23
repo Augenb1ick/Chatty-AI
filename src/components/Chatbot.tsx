@@ -1,48 +1,87 @@
-import React, { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
+import { getSearchData } from '../utills/googleSearchApi';
 
 type ChatbotProps = {
-  textFromVoice: string
-}
+  textFromVoice: string;
+};
+
+type Message = {
+  role: string;
+  content: string;
+};
 
 const Chatbot: FC<ChatbotProps> = ({ textFromVoice }) => {
   const [prompt, setPrompt] = useState('');
   const [apiResponse, setApiResponse] = useState('');
   const [loading, setLoading] = useState(false);
+  const [chatHistory, setChatHistory] = useState<Message[]>([
+    { role: 'system', content: 'Вы - помощник по вопросам домашних животных' },
+  ]);
+  const [pageLoaded, setPageLoaded] = useState(false);
 
-  const apiKey = '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';
-  const APIBody = {
-      "model": "gpt-3.5-turbo",
-      "messages": [{"role": "user", "content": prompt ? prompt : textFromVoice }],
-      "temperature": 0,
-      "max_tokens": 1000,
-      "top_p": 1.0,
-      "frequency_penalty": 0.0,
-      "presence_penalty": 0.0
-  }
+  const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
 
   useEffect(() => {
-    textFromVoice && postToGpt()
-  },[textFromVoice])
+    if (textFromVoice && pageLoaded) {
+      getSearchData(textFromVoice).then((data) => {
+        setChatHistory((prevMessages) => [
+          ...prevMessages,
+          { role: 'user', content: textFromVoice },
+          { role: 'system', content: data },
+        ]);
+      });
+    }
+  }, [textFromVoice, pageLoaded]);
+
+  useEffect(() => {
+    if (pageLoaded) {
+      postToGpt();
+    } else {
+      setPageLoaded(true);
+    }
+  }, [chatHistory, pageLoaded]);
 
   async function postToGpt() {
-    setLoading(true)
-    await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + apiKey
-      },
-      body: JSON.stringify(APIBody)
-    }).then((data) => {
-      return data.json();
-    }).then((data) => {
-      setApiResponse(data.choices[0].message.content); 
-    }).finally(() => {setLoading(false)})
+    setLoading(true);
+    const APIBody = {
+      model: 'gpt-3.5-turbo-0613',
+      messages: chatHistory,
+      temperature: 0,
+      max_tokens: 1000,
+      top_p: 1.0,
+      frequency_penalty: 0.0,
+      presence_penalty: 0.0,
+    };
+
+    try {
+      const response = await fetch(
+        'https://api.openai.com/v1/chat/completions',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + apiKey,
+          },
+          body: JSON.stringify(APIBody),
+        }
+      );
+
+      const data = await response.json();
+      const res = data.choices[0].message;
+      setApiResponse(res.content);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    postToGpt()
+    setChatHistory((prevMessages) => [
+      ...prevMessages,
+      { role: 'user', content: prompt },
+    ]);
     setPrompt('');
   };
 
@@ -51,7 +90,6 @@ const Chatbot: FC<ChatbotProps> = ({ textFromVoice }) => {
       <div>
         <form onSubmit={handleSubmit}>
           <textarea
-            type='text'
             value={prompt}
             placeholder='Спросить ассистента'
             onChange={(e) => setPrompt(e.target.value)}
@@ -59,7 +97,8 @@ const Chatbot: FC<ChatbotProps> = ({ textFromVoice }) => {
           <button disabled={loading || prompt.length === 0} type='submit'>
             Отправить
           </button>
-          <br />{loading ? 'Генерирую ответ.' : ''}
+          <br />
+          {loading ? 'Генерирую ответ.' : ''}
         </form>
       </div>
       {apiResponse && (
