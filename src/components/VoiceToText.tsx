@@ -2,6 +2,7 @@ import { FC } from 'react';
 import SpeechRecognition, {
   useSpeechRecognition,
 } from 'react-speech-recognition';
+import './styles/VoiceToText.css';
 
 type PropsType = {
   transriptedText: (value: string) => void;

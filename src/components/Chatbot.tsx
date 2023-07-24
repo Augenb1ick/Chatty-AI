@@ -1,5 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 import { getSearchData } from '../utills/googleSearchApi';
+import './styles/Chatbot.css';
 
 type ChatbotProps = {
   textFromVoice: string;
