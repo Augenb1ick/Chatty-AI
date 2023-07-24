@@ -11,13 +11,20 @@ export async function getSearchData(q: string): Promise<string> {
     );
     const data = await response.json();
 
-    const searchResults = data.items.map((item) => ({
+    type searchResultsItems = {
+      snippet: string;
+      link: string;
+    };
+
+    const searchResults = data.items.map((item: searchResultsItems) => ({
       snippet: item.snippet,
       link: item.link,
     }));
 
     const finalResults = searchResults
-      .map((result) => [result.snippet, result.link].join(','))
+      .map((result: searchResultsItems) =>
+        [result.snippet, result.link].join(',')
+      )
       .join('');
 
     return finalResults;

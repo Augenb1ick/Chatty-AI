@@ -1,7 +1,7 @@
-import React from 'react';
+import { FC } from 'react';
 import './styles/Header.css';
 
-const Header = () => {
+const Header: FC = () => {
   return <div>Header</div>;
 };
 
