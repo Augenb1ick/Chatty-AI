@@ -1,0 +1,75 @@
+.popup {
+  display: flex;
+  align-items: center;
+  
+  position: sticky;
+  bottom: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.55s, opacity 0.5s linear;
+  z-index: 10;
+}
+
+.popup_visible {
+  visibility: visible;
+  opacity: 1;
+  
+}
+
+.popup__container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px 40px 54px 40px;
+  width: 674px;
+  background: #fff;
+  border-radius: 10px;
+  line-height: 29px;
+}
+
+.popup__container-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.popup__name {
+  font-size: 40px;
+  line-height: 48px;
+  white-space: nowrap;
+  text-align: center;
+  align-self: center;
+  margin: 0;
+}
+
+.popup__close-button {
+  background: url('../../assets//close-icon.svg') center no-repeat;
+  padding: 0;
+  margin: 0 0 0 66px;
+  width: 29.46px;
+  height: 29.46px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.popup__changeAssistant {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 32px 125px 0 125px;
+}
+
+.popup__AssistantButton {
+  background: #fff;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.popup__AssistantButton:nth-last-child(1) {
+  
+}
