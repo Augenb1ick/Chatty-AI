@@ -1,0 +1,29 @@
+.footer {
+  padding: 120px 0 120px 150px;
+  background: #F9F8F9;
+}
+
+.footer__info {
+  margin: 32px 0 64px 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.footer__text {
+  color: #1E1E1E;
+  
+  font-size: 18px;
+  font-style: normal;
+
+  line-height: 24px;
+}
+
+.footer__text_contacts {
+  font-family: 'Onest-medium';
+  font-weight: 500;
+}
+
+.footer__text_copyright {
+  font-family: 'Onest';
+  font-weight: 400;
+}

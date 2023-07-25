@@ -2,7 +2,8 @@
   display: flex;
   padding: 22px 150px;
   justify-content: space-between;
-  background: #FFFFFF;;
+  background: #FFFFFF;
+  box-shadow: 6px 6px 20px 0px rgba(232, 140, 155, 0.30), -4px -4px 20px 0px rgba(143, 202, 237, 0.30);
 }
 
 .header__navBar {

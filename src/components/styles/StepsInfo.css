@@ -1,14 +1,102 @@
 .stepsInfo{
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  margin-bottom: 120px;
 }
 
-.stepsInfo__arrow{
-  background: url('../../assets/arrow-big.svg') center no-repeat;
+/*.stepsInfo__arrow{
+  justify-self: center;
+  max-width: 96px;
   padding: 0;
   margin: 0;
 
   border: none;
   cursor: pointer;
   outline: none;
+}*/
+
+.stepsInfo__MainDescription{
+  margin: 120px 0 96px 150px;
+  max-width: 560px;
+  color: #000;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px;
+}
+
+.stepsInfo__points{
+  margin: 0 150px;
+}
+
+.stepsInfo__points-steps{
+  display: flex;
+  background: url('../../assets/curve-line.svg') no-repeat;
+  background-position: bottom 70px left 105px;
+  background-size: 873px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/*.stepsInfo__curve-line {
+  position: absolute;
+  max-width: 873px;
+  margin-left: 97px;
+  z-index: 0;
+}*/
+
+.stepsInfo__points-step {
+  display: grid;
+  flex-direction: column;
+  width: 270px;
+  z-index: 1;
+}
+
+.stepsInfo__points-step:nth-child(2n+1) {
+  margin-top: 85px;
+}
+
+.stepsInfo__ellipse{
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 6px 6px 20px 0px rgba(232, 140, 155, 0.30), -4px -4px 20px 0px rgba(143, 202, 237, 0.30);
+  
+  color: #000;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px;
+}
+
+.stepsInfo__description {
+  display: flex;
+  text-align: center
+}
+
+@media screen and (max-width: 1370px) {
+  .stepsInfo__points-steps {
+    background-size: 800px
+  }
+}
+
+@media screen and (max-width: 1290px) {
+  .stepsInfo__points-steps {
+    background-size: 720px
+  }
+}
+
+@media screen and (max-width: 1230px) {
+  .stepsInfo__points-steps {
+    background-size: 65
+    0px
+  }
 }
