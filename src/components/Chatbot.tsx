@@ -4,6 +4,7 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from 'react-speech-recognition';
 import './styles/Chatbot.css';
+import './styles/ChatBotSearch.css';
 import { Message } from '../models/Message';
 import ChatHistory from './ChatHistory';
 
