@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import './styles/Main.css';
 import assistantMain from '../images/assistant+ellipse.png';
 import ChatBotSearch from './ChatBotSearch';
