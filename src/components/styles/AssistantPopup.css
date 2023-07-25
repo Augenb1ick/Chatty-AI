@@ -8,6 +8,7 @@
   opacity: 0;
   transition: visibility 0.55s, opacity 0.5s linear;
   z-index: 10;
+  
 }
 
 .popup_visible {
@@ -27,6 +28,7 @@
   background: #fff;
   border-radius: 10px;
   line-height: 29px;
+  border: 1px solid red
 }
 
 .popup__container-info {
@@ -36,7 +38,9 @@
 }
 
 .popup__name {
+  color: #1E1E1E;
   font-size: 40px;
+  font-weight: 400;
   line-height: 48px;
   white-space: nowrap;
   text-align: center;

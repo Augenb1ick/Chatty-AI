@@ -1,0 +1,14 @@
+.stepsInfo{
+  display: flex;
+  flex-direction: column;
+}
+
+.stepsInfo__arrow{
+  background: url('../../assets/arrow-big.svg') center no-repeat;
+  padding: 0;
+  margin: 0;
+
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
