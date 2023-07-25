@@ -19,7 +19,6 @@ const Header = ( {handleChangeAssistant} :any) => {
       }
   }
   
-
   return (
     <div className="header">
       <Link to ="/#">

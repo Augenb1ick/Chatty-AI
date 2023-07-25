@@ -4,6 +4,7 @@ import Chatbot from './components/Chatbot';
 import Main from './components/Main';
 import StepsInfo from './components/StepsInfo';
 import AssistantPopup from './components/AssistantPopup';
+import Footer from './components/Footer';
 import './components/styles/App.css';
 
 const App: FC = () => {
@@ -25,8 +26,9 @@ const App: FC = () => {
       <StepsInfo />
       <Chatbot />
       <AssistantPopup isOpen={isOpenAssistantPopup} onClose={closePopups}/>
+      <Footer />
     </div>
-  );
+  ); 
 };
 
 export default App;
