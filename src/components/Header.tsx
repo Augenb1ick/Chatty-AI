@@ -6,7 +6,7 @@ import arrowUp from '../assets/arrow-up.svg';
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 
-const Header = ( {handleChangeAssistant} :any) => {
+const Header = ( {handleChangeAssistant, handleLogoClick} :any) => {
   const { t } = useTranslation();
 
   function handleChangeLanguage () {
@@ -22,7 +22,7 @@ const Header = ( {handleChangeAssistant} :any) => {
   return (
     <div className="header">
       <Link to ="/#">
-        <img className="header__logo" src={logo} alt="логотип"/>
+        <img onClick={handleLogoClick} className="header__logo" src={logo} alt="логотип"/>
       </Link>
       <div className="header__navBar">
         {/*<Link to='/reminders' className="header__navBar-reminders">{reminders}</Link>*/}
