@@ -7,7 +7,7 @@ import AssistantPopup from './components/AssistantPopup';
 import './components/styles/App.css';
 
 const App: FC = () => {
-  const [text, setText] = useState('');
+  //const [text, setText] = useState('');
   const [isOpenAssistantPopup, setIsOpenAssistantPopup] = useState(false);
 
   function handleChangeAssistant () {

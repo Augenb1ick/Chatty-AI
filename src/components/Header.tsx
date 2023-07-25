@@ -1,6 +1,5 @@
-import React from 'react';
 //import { useState } from 'react';
-import { FC } from 'react';
+//import { FC } from 'react';
 import './styles/Header.css';
 import logo from '../assets/logo.svg';
 import arrowUp from '../assets/arrow-up.svg';

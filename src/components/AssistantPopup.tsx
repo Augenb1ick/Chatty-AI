@@ -1,4 +1,3 @@
-import React from 'react';
 import doggy from '../assets/dog.svg';
 import kitty from '../assets/cat.svg';
 import './styles/AssistantPopup.css';
