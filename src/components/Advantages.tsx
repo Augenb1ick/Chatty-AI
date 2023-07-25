@@ -1,7 +1,8 @@
-import React from 'react';
+import { FC } from 'react';
+
 import './styles/Advantages.css';
 
-const Advantages = () => {
+const Advantages: FC = () => {
   return <div>Advantages</div>;
 };
 

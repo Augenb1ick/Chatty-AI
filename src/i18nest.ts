@@ -14,10 +14,9 @@ i18n
     en: {translations: translationMergeEN,},
     ru: {translations: translationMergeRU,},
   },
-  lng: 'ru',
+  lng: 'en',
   fallbackLng: 'en',
   debug: false,
-  
 
   // have a common namespace used around the full app
   ns: ['translations'],

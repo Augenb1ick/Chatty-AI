@@ -1,7 +1,7 @@
-import React from 'react';
+import { FC } from 'react';
 import './styles/HowTo.css';
 
-const HowTo = () => {
+const HowTo: FC = () => {
   return <div>HowTo</div>;
 };
 

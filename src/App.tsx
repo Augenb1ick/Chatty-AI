@@ -1,5 +1,4 @@
 import { FC, useState } from 'react';
-import VoiceToText from './components/VoiceToText';
 import Header from './components/Header';
 import Chatbot from './components/Chatbot';
 import Main from './components/Main';
@@ -24,8 +23,7 @@ const App: FC = () => {
       <Header handleChangeAssistant={handleChangeAssistant}/>
       <Main />
       <StepsInfo />
-      <VoiceToText transriptedText={setText} />
-      <Chatbot textFromVoice={text} />
+      <Chatbot />
       <AssistantPopup isOpen={isOpenAssistantPopup} onClose={closePopups}/>
     </div>
   );

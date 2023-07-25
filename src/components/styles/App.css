@@ -12,3 +12,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+button {
+  transition: opacity 0.4s ease;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.6;
+}

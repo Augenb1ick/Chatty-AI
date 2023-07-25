@@ -1,7 +1,7 @@
-import React from 'react';
+import { FC } from 'react';
 import './styles/Main.css';
 
-const Main = () => {
+const Main: FC = () => {
   return (
   <div className="main">
     <img className="main__img" />

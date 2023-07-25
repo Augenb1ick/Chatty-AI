@@ -1,0 +1,126 @@
+.chat {
+  background-color: #d3d3d3;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+}
+
+.bigMicro {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: url(../../images/Frame42.svg) rgba(0, 0, 0, 0.5) no-repeat;
+  z-index: 3;
+  background-position: center;
+  display: grid;
+}
+
+.dialogHistory {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  padding-top: 54px;
+  padding-bottom: 54px;
+  color: #fff;
+  gap: 32px;
+}
+
+.chat-message_assistant-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-left: 54px;
+}
+
+.chat-message_user-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-right: 54px;
+  align-self: flex-end;
+}
+
+.ava {
+  margin-top: auto;
+}
+
+.chat-message {
+  display: inline-flex;
+  align-items: center;
+  background-color: #9a9a9a;
+  min-width: 300px;
+  max-width: 600px;
+  padding: 32px;
+  border-radius: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inputArea {
+  margin: auto;
+  min-width: 946px;
+  min-height: 64px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 32px;
+  margin-bottom: 54px;
+  justify-content: space-between;
+}
+
+.gradient {
+  background: linear-gradient(90deg, white, gray, white);
+
+  animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position-x: 0%;
+  }
+  100% {
+    background-position-x: 250px;
+  }
+}
+
+.chatInput {
+  color: #212121;
+  background-color: transparent;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  flex-basis: 80%;
+  border: none;
+  margin-left: 32px;
+  min-height: 32px;
+  outline: none;
+}
+
+.chatBtns {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin-left: auto;
+  margin-right: 32px;
+}
+
+.submitBtn {
+  width: 32px;
+  height: 32px;
+  background: url(../../images/akar-icons_send.svg) transparent no-repeat center;
+  outline: none;
+  border: none;
+}
+
+.microBtn {
+  width: 32px;
+  height: 32px;
+  background: url(../../images/ph_microphone.svg) transparent no-repeat center;
+  outline: none;
+  border: none;
+}
