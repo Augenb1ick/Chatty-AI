@@ -4,12 +4,8 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from 'react-speech-recognition';
 import './styles/Chatbot.css';
-import userAva from '../images/Ellipse 10.svg';
-import assistantAva from '../images/Ellipse 8.svg';
-type Message = {
-  role: string;
-  content: string;
-};
+import { Message } from '../models/Message';
+import ChatHistory from './ChatHistory';
 
 const Chatbot: FC = () => {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
@@ -20,7 +16,12 @@ const Chatbot: FC = () => {
     {
       role: 'system',
       content:
-        'Вы - Капибарыч, основная специализация - экперт по вопросам домашних животных',
+        'Тебя зовут Капибарыч, твоя основная специализация - экперт по вопросам домашних животных',
+    },
+    {
+      role: 'assistant',
+      content:
+        'Добро пожаловать в мир заботы и любви к вашим домашним питомцам! Я ваш голосовой помощник, готовый помочь вам обеспечить оптимальный уход и здоровье для ваших маленьких друзей. Я создан, чтобы стать вашим верным компаньоном во всех вопросах, связанных с уходом за ваших любимцев. Здесь вы найдете полезные советы, надежные рекомендации и проверенные способы обеспечить вашим питомцам счастливую и здоровую жизнь.',
     },
   ]);
   const lastMessageRoleRef = useRef<string | null>(null);
@@ -125,63 +126,40 @@ const Chatbot: FC = () => {
     }
   }
 
-  const userChatMessage = (message: Message, index: number) => (
-    <div key={index} className='chat-message_user-container'>
-      <div className='chat-message'>{message.content}</div>
-      <img className='ava' src={userAva} />
-    </div>
-  );
-
-  const assistantChatMessage = (message: Message, index: number) => (
-    <div key={index} className='chat-message_assistant-container'>
-      <img className='ava' src={assistantAva} />
-      <div className='chat-message'>{message.content}</div>
-    </div>
-  );
-
   return (
-    <div className='chat'>
-      {listening ? <div className='bigMicro'> </div> : null}
-      <div className='dialogHistory'>
-        {chatHistory.map((message, index) => {
-          if (message.role === 'user') {
-            return userChatMessage(message, index);
-          }
-          if (message.role === 'assistant') {
-            return assistantChatMessage(message, index);
-          } else {
-            return null;
-          }
-        })}
-      </div>
-      <form
-        className={`inputArea ${loading ? 'gradient' : ''} `}
-        onSubmit={handleSubmit}
-      >
-        <input
-          className='chatInput'
-          value={
-            loading ? 'Генерирую ответ...' : transcript ? transcript : prompt
-          }
-          placeholder='Спросить ассистента'
-          onChange={handleInputChange}
-          disabled={loading}
-        ></input>
-        <div className='chatBtns'>
-          <button
-            onClick={() => {
-              startListening();
-            }}
-            className='microBtn'
-            type='button'
-          ></button>
-          <button
-            className='submitBtn'
+    <div className='chat-container'>
+      <div className='chat'>
+        {listening ? <div className='bigMicro'> </div> : null}
+        <ChatHistory chatHistory={chatHistory} />
+        <form
+          className={`inputArea ${loading ? 'gradient' : ''} `}
+          onSubmit={handleSubmit}
+        >
+          <input
+            className='chatInput'
+            value={
+              loading ? 'Генерирую ответ...' : transcript ? transcript : prompt
+            }
+            placeholder='Спросить ассистента'
+            onChange={handleInputChange}
             disabled={loading}
-            type='submit'
-          ></button>
-        </div>
-      </form>
+          ></input>
+          <div className='chatBtns'>
+            <button
+              onClick={() => {
+                startListening();
+              }}
+              className='microBtn'
+              type='button'
+            ></button>
+            <button
+              className='submitBtn'
+              disabled={loading}
+              type='submit'
+            ></button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

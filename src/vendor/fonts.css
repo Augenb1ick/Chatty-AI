@@ -1,6 +1,20 @@
 @font-face {
-    font-family: 'Product Sans';
-    font-style:  normal;
-    font-weight: 400;
-    src: url("./productsans.ttf") format("ttf"),
+  font-family: 'Product Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./productsans.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./OnestRegular1602-hint.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./OnestBold1602-hint.ttf') format('ttf');
 }
