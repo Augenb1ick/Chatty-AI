@@ -1,27 +1,2 @@
-:root {
-  font-family: Archivo, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color: #000;
-  background-color: #fff;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-button {
-  transition: opacity 0.4s ease;
-  cursor: pointer;
-}
-
-button:hover {
-  opacity: 0.6;
-}
-
-body {
-  margin: 0;
-}
+@import url('./vendor/normalize.css');
+/*@import url('./vendor/fonts/fonts.css');*/
