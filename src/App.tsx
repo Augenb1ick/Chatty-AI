@@ -10,6 +10,11 @@ import Footer from './components/Footer';
 const App: FC = () => {
   //const [text, setText] = useState('');
   const [isOpenAssistantPopup, setIsOpenAssistantPopup] = useState(false);
+  const [activeProfile, setActiveProfile] = useState(0);
+
+  const onSelectedProfile = (index:any) => {
+    setActiveProfile(index);
+  };
 
   function handleChangeAssistant() {
     setIsOpenAssistantPopup(true);
@@ -28,12 +33,22 @@ const App: FC = () => {
 
 
   return (
-    <div className='App'>
-      <Header handleLogoClick={() => {setIsClicked(false)}} handleChangeAssistant={handleChangeAssistant} />
-      {isClicked ? <Chatbot /> : <Main onSeacrhClick={handleRerender} />}
+    <div className="App">
+      <Header 
+        activeProfile={activeProfile}
+        handleChangeAssistant={handleChangeAssistant} 
+        handleLogoClick={() => {setIsClicked(false)}}
+      />
+      
       {!isClicked ? <StepsInfo /> : null}
+      {isClicked ? <Chatbot /> : <Main onSeacrhClick={handleRerender} />}
       {!isClicked ? <Footer /> : null}
-      <AssistantPopup isOpen={isOpenAssistantPopup} onClose={closePopups} />
+      <AssistantPopup 
+        activeProfile={activeProfile} 
+        onSelectedProfile={onSelectedProfile}
+        isOpen={isOpenAssistantPopup} 
+        onClose={closePopups} 
+      />
     </div>
   );
 };

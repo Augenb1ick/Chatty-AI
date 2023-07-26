@@ -1,15 +1,47 @@
 import doggy from '../assets/dog.svg';
 import kitty from '../assets/cat.svg';
+import parrot from '../assets/bird.svg';
 import './styles/AssistantPopup.css';
 
-const AssistantPopup = ({ isOpen, onClose }:{
+const AssistantPopup = ({ isOpen, onClose, activeProfile, onSelectedProfile }:{
   isOpen: boolean
   onClose: any
+  activeProfile: any
+  onSelectedProfile: any
 }) => {
 
-  function handleChooseAssistant () {
 
-  }
+  const profileData: any = [
+    {
+      image: doggy,
+      active: true,
+    },
+    {
+      image: kitty,
+      active: false,
+    },
+    {
+      image: parrot,
+      active: false,
+    },
+  ]
+
+  const profileImage = profileData.map((tab:any, i:any) => {
+    return (
+      <button 
+        type ="button" 
+        aria-label="changeAssistantButton"
+        className={`popup__AssistantButton ${i === activeProfile ? 'popup__AssistantButton_active' : ''}`}
+        key={i}
+        onClick={() => onSelectedProfile(i)} >
+          <img className="header__logo" src={tab.image} alt="изображение собаки????"/>
+      </button>  
+    );
+  });
+
+  
+
+  console.log('activeProfile', activeProfile)
 
   return (
     <div className= {`popup ${isOpen ? 'popup_visible' : ''} `}> 
@@ -25,20 +57,7 @@ const AssistantPopup = ({ isOpen, onClose }:{
           </button>
         </div>
         <div className="popup__changeAssistant">
-          <button 
-            type ="button" 
-            aria-label="changeAssistantButton"
-            className="popup__AssistantButton"
-            onClick={handleChooseAssistant} >
-              <img className="header__logo" src={doggy} alt="изображение собаки"/>
-          </button>
-          <button 
-            type ="button"
-            aria-label="changeAssistantButton"
-            className="popup__AssistantButton"
-            onClick={handleChooseAssistant} >
-              <img className="header__logo" src={kitty} alt="изображение кота"/>
-          </button>
+          {profileImage}
         </div>
       </div>
 </div>
