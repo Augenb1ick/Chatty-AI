@@ -1,33 +1,31 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import './styles/ChatBotSearch.css';
 
 interface ChatBotSearch {
   isClicked: (value: boolean) => void;
+  onMicroClick: (value: boolean) => void;
 }
 
-const ChatBotSearch: FC<ChatBotSearch> = ({ isClicked }) => {
-  const handleSearchClick = () => {
-    isClicked(true);
-  };
-
+const ChatBotSearch: FC<ChatBotSearch> = ({ onMicroClick, isClicked }) => {
   return (
     <form className='inputArea'>
       <input
-        onClick={handleSearchClick}
         className='chatInput'
-        placeholder='Спросить ассистента'
+        placeholder='Задайте ваш вопрос'
+        onClick={() => {
+          isClicked(true);
+        }}
       ></input>
       <div className='chatBtns'>
         <button
-          onClick={handleSearchClick}
+          onClick={() => {
+            onMicroClick(true);
+            isClicked(true);
+          }}
           className='microBtn'
           type='button'
         ></button>
-        <button
-          onClick={handleSearchClick}
-          className='submitBtn'
-          type='submit'
-        ></button>
+        <button disabled className='submitBtn' type='submit'></button>
       </div>
     </form>
   );

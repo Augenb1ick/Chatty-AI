@@ -25,9 +25,19 @@ const App: FC = () => {
   };
 
   const [isClicked, setIsClicked] = useState(false);
+  const [isMicroClicked, setIsMicroClicked] = useState(false);
+  const [isFaqOpened, setIsFaqOpened] = useState(false);
 
   const handleRerender = (value: boolean) => {
     setIsClicked(value);
+  };
+
+  const handleMicroClick = (value: boolean) => {
+    setIsMicroClicked(value);
+  };
+
+  const handleFaqOpen = (value: boolean) => {
+    setIsFaqOpened(value);
   };
 
   return (
@@ -39,7 +49,20 @@ const App: FC = () => {
           setIsClicked(false);
         }}
       />
-      {isClicked ? <Chatbot /> : <Main onSeacrhClick={handleRerender} />}
+      {isClicked ? (
+        <Chatbot
+          activeProfile={activeProfile}
+          isMicroOn={isMicroClicked}
+          isFaqOpened={isFaqOpened}
+        />
+      ) : (
+        <Main
+          onMicroClick={handleMicroClick}
+          isClicked={handleRerender}
+          isFaqOpened={handleFaqOpen}
+          activeProfile={activeProfile}
+        />
+      )}
       {!isClicked ? <StepsInfo /> : null}
       {!isClicked ? <Footer /> : null}
       <AssistantPopup

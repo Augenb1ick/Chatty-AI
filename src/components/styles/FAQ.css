@@ -5,16 +5,15 @@
   left: 0;
   z-index: 2;
   justify-items: center;
-  visibility: hidden;
+  visibility: visible;
   display: grid;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.3s linear, visibility 0.3s;
 }
 
 .FAQ-closed {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.5s ease;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .FAQ__content {
@@ -85,8 +84,11 @@
   position: absolute;
   right: 32px;
   top: 32px;
+  opacity: 1;
+  transition: opacity 0.3s linear, visibility 0.3s;
 }
 
 .FAQ__open-btn_hidden {
   visibility: hidden;
+  opacity: 0;
 }

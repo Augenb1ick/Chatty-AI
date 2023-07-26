@@ -1,8 +1,16 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import './styles/FAQ.css';
 
-const FAQ: FC = () => {
+interface FAQ {
+  mainFaqOpen: boolean;
+}
+
+const FAQ: FC<FAQ> = ({ mainFaqOpen }) => {
   const [faqIsOpened, setFaqIsOpened] = useState(false);
+
+  useEffect(() => {
+    mainFaqOpen && setFaqIsOpened(true);
+  }, [mainFaqOpen]);
 
   const handleOpenToggle = () => {
     setFaqIsOpened(!faqIsOpened);
@@ -47,7 +55,7 @@ const FAQ: FC = () => {
       </div>
       <button
         onClick={handleOpenToggle}
-        className={`FAQ__open-btn ${!faqIsOpened && 'FAQ__open-btn_hidden'}`}
+        className={`FAQ__open-btn ${faqIsOpened && 'FAQ__open-btn_hidden'}`}
       ></button>
     </>
   );
