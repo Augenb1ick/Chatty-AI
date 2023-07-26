@@ -30,6 +30,7 @@ const App: FC = () => {
 
   const handleRerender = (value: boolean) => {
     setIsClicked(value);
+    setIsFaqOpened(false);
   };
 
   const handleMicroClick = (value: boolean) => {
@@ -37,6 +38,7 @@ const App: FC = () => {
   };
 
   const handleFaqOpen = (value: boolean) => {
+    setIsMicroClicked(false);
     setIsFaqOpened(value);
   };
 
