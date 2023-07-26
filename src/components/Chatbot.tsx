@@ -7,6 +7,7 @@ import './styles/Chatbot.css';
 import './styles/ChatBotSearch.css';
 import { Message } from '../models/Message';
 import ChatHistory from './ChatHistory';
+import FAQ from './FAQ';
 
 const Chatbot: FC = () => {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
@@ -130,6 +131,7 @@ const Chatbot: FC = () => {
   return (
     <div className='chat-container'>
       <div className='chat'>
+        <FAQ />
         {listening ? <div className='bigMicro'> </div> : null}
         <ChatHistory chatHistory={chatHistory} />
         <form

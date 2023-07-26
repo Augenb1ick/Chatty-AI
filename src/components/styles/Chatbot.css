@@ -13,6 +13,7 @@
   min-height: 90vh;
   justify-content: space-between;
   color: #1e1e1e;
+  position: relative;
 }
 
 .bigMicro {

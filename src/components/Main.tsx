@@ -8,6 +8,13 @@ interface Main {
 }
 
 const Main: FC<Main> = ({ onSeacrhClick }) => {
+
+  const handleScroll = () => {
+    window.scroll({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  }
   return (
     <div className='main'>
       <img className='main__img' src={assistantMain} />
@@ -17,8 +24,8 @@ const Main: FC<Main> = ({ onSeacrhClick }) => {
       <div className='main__search-container'>
         <ChatBotSearch isClicked={onSeacrhClick} />
       </div>
-      <button className='main__button'>УЗНАЙ БОЛЬШЕ ОБО МНЕ</button>
-      <button className='main__down-button'></button>
+      <button onClick={() => {onSeacrhClick(true)}} className='main__button'>УЗНАЙ БОЛЬШЕ ОБО МНЕ</button>
+      <button onClick={handleScroll} className='main__down-button'></button>
     </div>
   );
 };

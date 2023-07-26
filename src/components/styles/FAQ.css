@@ -1,0 +1,76 @@
+.FAQ {
+  display: flex;
+  flex-direction: row;
+  color: #1e1e1e;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  padding: 80px;
+  border-radius: 0px 0px 50px 50px;
+  border-bottom: 1px solid #d3d3d3;
+  background: rgba(217, 217, 217, 0);
+  box-shadow: 0px 4px 20px 5px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.FAQ-closed {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.FAQ__column {
+  max-width: 463px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.FAQ__heading {
+  font-family: Product Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.FAQ__text {
+  font-family: Onest;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  background-color: #f9f8f9;
+  padding: 32px;
+  min-height: 48px;
+  border-radius: 12px;
+  margin: 0;
+}
+
+.FAQ__close-btn {
+  background: url(../../images/close-btn.svg) no-repeat transparent;
+  width: 50px;
+  height: 50px;
+  border: none;
+  position: absolute;
+  right: 32px;
+  top: 32px;
+}
+
+.FAQ__open-btn {
+  background: url(../../images/help-btn.svg) no-repeat transparent;
+  width: 50px;
+  height: 50px;
+  border: none;
+  position: absolute;
+  right: 32px;
+  top: 32px;
+}
+
+.FAQ__open-btn_hidden {
+  visibility: hidden;
+}
