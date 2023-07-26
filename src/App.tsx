@@ -4,8 +4,8 @@ import Chatbot from './components/Chatbot';
 import Main from './components/Main';
 import StepsInfo from './components/StepsInfo';
 import AssistantPopup from './components/AssistantPopup';
-import Footer from './components/Footer';
 import './components/styles/App.css';
+import Footer from './components/Footer';
 
 const App: FC = () => {
   //const [text, setText] = useState('');
@@ -16,29 +16,41 @@ const App: FC = () => {
     setActiveProfile(index);
   };
 
-  function handleChangeAssistant () {
-    setIsOpenAssistantPopup(true)
+  function handleChangeAssistant() {
+    setIsOpenAssistantPopup(true);
   }
 
   const closePopups = () => {
     setIsOpenAssistantPopup(false);
   };
 
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleRerender = (value: boolean) => {
+    setIsClicked(value);
+  };
+
+
+
   return (
     <div className="App">
-      <Header activeProfile={activeProfile} handleChangeAssistant={handleChangeAssistant} />
-      <Main />
-      <StepsInfo />
-      <Chatbot />
+      <Header 
+        activeProfile={activeProfile}
+        handleChangeAssistant={handleChangeAssistant} 
+        handleLogoClick={() => {setIsClicked(false)}}
+      />
+      
+      {!isClicked ? <StepsInfo /> : null}
+      {isClicked ? <Chatbot /> : <Main onSeacrhClick={handleRerender} />}
+      {!isClicked ? <Footer /> : null}
       <AssistantPopup 
         activeProfile={activeProfile} 
         onSelectedProfile={onSelectedProfile}
         isOpen={isOpenAssistantPopup} 
         onClose={closePopups} 
       />
-      <Footer />
     </div>
-  ); 
+  );
 };
 
 export default App;

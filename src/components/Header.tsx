@@ -9,7 +9,7 @@ import doggy from '../assets/dog.svg';
 import kitty from '../assets/cat.svg';
 import parrot from '../assets/bird.svg';
 
-const Header = ( {handleChangeAssistant, activeProfile} :any) => {
+const Header = ( {handleChangeAssistant, handleLogoClick, activeProfile} :any) => {
   const { t } = useTranslation();
 
   const imageData: any = [
@@ -44,7 +44,7 @@ const Header = ( {handleChangeAssistant, activeProfile} :any) => {
   return (
     <div className="header">
       <Link to ="/#">
-        <img className="header__logo" src={logo} alt="логотип"/>
+        <img onClick={handleLogoClick} className="header__logo" src={logo} alt="логотип"/>
       </Link>
       <div className="header__navBar">
         {/*<Link to='/reminders' className="header__navBar-reminders">{reminders}</Link>*/}
