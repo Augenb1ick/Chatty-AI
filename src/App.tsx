@@ -12,7 +12,7 @@ const App: FC = () => {
   const [isOpenAssistantPopup, setIsOpenAssistantPopup] = useState(false);
   const [activeProfile, setActiveProfile] = useState(0);
 
-  const onSelectedProfile = (index:any) => {
+  const onSelectedProfile = (index: any) => {
     setActiveProfile(index);
   };
 
@@ -30,24 +30,23 @@ const App: FC = () => {
     setIsClicked(value);
   };
 
-
-
   return (
-    <div className="App">
-      <Header 
+    <div className='App'>
+      <Header
         activeProfile={activeProfile}
-        handleChangeAssistant={handleChangeAssistant} 
-        handleLogoClick={() => {setIsClicked(false)}}
+        handleChangeAssistant={handleChangeAssistant}
+        handleLogoClick={() => {
+          setIsClicked(false);
+        }}
       />
-      
-      {!isClicked ? <StepsInfo /> : null}
       {isClicked ? <Chatbot /> : <Main onSeacrhClick={handleRerender} />}
+      {!isClicked ? <StepsInfo /> : null}
       {!isClicked ? <Footer /> : null}
-      <AssistantPopup 
-        activeProfile={activeProfile} 
+      <AssistantPopup
+        activeProfile={activeProfile}
         onSelectedProfile={onSelectedProfile}
-        isOpen={isOpenAssistantPopup} 
-        onClose={closePopups} 
+        isOpen={isOpenAssistantPopup}
+        onClose={closePopups}
       />
     </div>
   );
