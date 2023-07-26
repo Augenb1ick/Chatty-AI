@@ -19,7 +19,7 @@ const Header = ( {handleChangeAssistant, handleLogoClick, activeProfile} :any) =
   ]
 
   const avatar = imageData
-    .filter((tab:any, i:any) => i === activeProfile)
+    .filter((_tab:any, i:any) => i === activeProfile)
     .map((tab:any, i:any) => {
       return (
         <button 
