@@ -27,7 +27,6 @@
   background: #fff;
   border-radius: 10px;
   line-height: 29px;
-  border: 1px solid red;
 }
 
 .popup__container-info {
@@ -66,9 +65,18 @@
 }
 
 .popup__AssistantButton {
+  opacity: .6;
   background: #fff;
   padding: 0;
   border: none;
+  border-radius: 50%;
   cursor: pointer;
   outline: none;
+}
+
+.popup__AssistantButton_active {
+  /*background: url('../../assets/ellipse.svg') center no-repeat;*/
+  opacity: 1;
+  box-shadow: 6px 6px 20px 0px rgba(251, 223, 247, 0.50), -4px -4px 20px 0px rgba(175, 219, 251, 0.50);
+
 }

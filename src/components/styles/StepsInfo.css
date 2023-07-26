@@ -52,7 +52,6 @@
   display: grid;
   flex-direction: column;
   width: 270px;
-  z-index: 1;
 }
 
 .stepsInfo__points-step:nth-child(2n+1) {

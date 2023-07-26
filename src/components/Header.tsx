@@ -5,9 +5,31 @@ import logo from '../assets/logo.svg';
 import arrowUp from '../assets/arrow-up.svg';
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import doggy from '../assets/dog.svg';
+import kitty from '../assets/cat.svg';
+import parrot from '../assets/bird.svg';
 
-const Header = ( {handleChangeAssistant} :any) => {
+const Header = ( {handleChangeAssistant, activeProfile} :any) => {
   const { t } = useTranslation();
+
+  const imageData: any = [
+    {content: doggy},
+    {content: kitty},
+    {content: parrot},
+  ]
+
+  const avatar = imageData
+    .filter((tab:any, i:any) => i === activeProfile)
+    .map((tab:any, i:any) => {
+      return (
+        <button 
+          className="header__button-assistant"
+          key={i}
+          onClick={handleChangeAssistant}>
+            <img className="header__profile-image" src={tab.content} alt="изображение собаки????"/>
+        </button>
+      )
+    })
 
   function handleChangeLanguage () {
     if (localStorage.getItem('i18nextLng') === 'en') {
@@ -29,7 +51,7 @@ const Header = ( {handleChangeAssistant} :any) => {
         <button className="header__button-language" onClick={handleChangeLanguage}>{t('__language__')}
           <img className="header__button-arrow" src={arrowUp} alt="изображение стрелки"/>
         </button>
-        <button className="header__button-assistant" onClick={handleChangeAssistant}></button>
+        {avatar}
       </div>
     </div>
   )

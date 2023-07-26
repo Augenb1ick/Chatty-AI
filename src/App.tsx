@@ -10,6 +10,11 @@ import './components/styles/App.css';
 const App: FC = () => {
   //const [text, setText] = useState('');
   const [isOpenAssistantPopup, setIsOpenAssistantPopup] = useState(false);
+  const [activeProfile, setActiveProfile] = useState(0);
+
+  const onSelectedProfile = (index:any) => {
+    setActiveProfile(index);
+  };
 
   function handleChangeAssistant () {
     setIsOpenAssistantPopup(true)
@@ -21,11 +26,16 @@ const App: FC = () => {
 
   return (
     <div className="App">
-      <Header handleChangeAssistant={handleChangeAssistant}/>
+      <Header activeProfile={activeProfile} handleChangeAssistant={handleChangeAssistant} />
       <Main />
       <StepsInfo />
       <Chatbot />
-      <AssistantPopup isOpen={isOpenAssistantPopup} onClose={closePopups}/>
+      <AssistantPopup 
+        activeProfile={activeProfile} 
+        onSelectedProfile={onSelectedProfile}
+        isOpen={isOpenAssistantPopup} 
+        onClose={closePopups} 
+      />
       <Footer />
     </div>
   ); 
