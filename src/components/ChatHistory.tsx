@@ -26,7 +26,6 @@ const ChatHistory: FC<ChatHistoryProps> = ({ chatHistory, activeProfile }) => {
   const userChatMessage = (message: Message, index: number) => (
     <div key={index} className='chat-message_user-container'>
       <div className='chat-message chat-message__user'>{message.content}</div>
-      <img className='ava' src={userAva} />
     </div>
   );
 

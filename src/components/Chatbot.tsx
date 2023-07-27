@@ -20,11 +20,13 @@ const Chatbot: FC<ChatBot> = ({ isMicroOn, isFaqOpened, activeProfile }) => {
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
+
   const [chatHistory, setChatHistory] = useState<Message[]>([
     {
       role: 'system',
-      content:
-        'Тебя зовут Капибарыч, твоя основная специализация - экперт по вопросам домашних животных',
+      content: `Тебя зовут ${handleAssistantName(
+        activeProfile
+      )}, твоя основная специализация - экперт по вопросам домашних животных`,
     },
     {
       role: 'assistant',
@@ -33,6 +35,19 @@ const Chatbot: FC<ChatBot> = ({ isMicroOn, isFaqOpened, activeProfile }) => {
     },
   ]);
   const lastMessageRoleRef = useRef<string | null>(null);
+
+  function handleAssistantName(value: number) {
+    switch (value) {
+      case 0:
+        return 'Оливер';
+      case 1:
+        return 'Винсет';
+      case 2:
+        return 'Густав';
+      default:
+        return 'Оливер';
+    }
+  }
 
   useEffect(() => {
     isMicroOn && startListening();
