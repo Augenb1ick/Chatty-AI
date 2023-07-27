@@ -1,11 +1,13 @@
 import { FC, useEffect, useState } from 'react';
 import './styles/FAQ.css';
+import { useTranslation } from 'react-i18next';
 
 interface FAQ {
   mainFaqOpen: boolean;
 }
 
 const FAQ: FC<FAQ> = ({ mainFaqOpen }) => {
+  const { t } = useTranslation();
   const [faqIsOpened, setFaqIsOpened] = useState(false);
 
   useEffect(() => {
@@ -21,31 +23,18 @@ const FAQ: FC<FAQ> = ({ mainFaqOpen }) => {
       <div className={`FAQ ${!faqIsOpened && 'FAQ-closed'}`}>
         <div className='FAQ__content'>
           <div className='FAQ__column'>
-            <h2 className='FAQ__heading'>Примеры вопросов</h2>
-            <p className='FAQ__text'>
-              Какие упражнения и игры будут хорошими для здоровья и развития
-              моего питомца?
-            </p>
-            <p className='FAQ__text'>
-              Как проводить ежедневный уход за шерстью и когтями моего питомца?
-            </p>
-            <p className='FAQ__text'>
-              Какие прививки необходимо делать моему питомцу и в каком возрасте?
-            </p>
+            <h2 className='FAQ__heading'>{t('__FAQ-examples-heading__')}</h2>
+            <p className='FAQ__text'>{t('__FAQ-examples-1__')}</p>
+            <p className='FAQ__text'>{t('__FAQ-examples-2__')}</p>
+            <p className='FAQ__text'>{t('__FAQ-examples-3__')}</p>
           </div>
           <div className='FAQ__column'>
-            <h2 className='FAQ__heading'>Ограничения</h2>
-            <p className='FAQ__text'>
-              Не использовать для проведения диагностики или самолечения
-              питомца.
-            </p>
-            <p className='FAQ__text'>
-              Избегать вопросов о лекарствах, их дозировке и назначении.
-            </p>
-            <p className='FAQ__text'>
-              В случае неотложных ситуаций обратиться к ветеринарному
-              специалисту.
-            </p>
+            <h2 className='FAQ__heading'>
+              {t('__FAQ-restrictions-heading__')}
+            </h2>
+            <p className='FAQ__text'>{t('__FAQ-restrictions-1__')}</p>
+            <p className='FAQ__text'>{t('__FAQ-restrictions-2__')}</p>
+            <p className='FAQ__text'>{t('__FAQ-restrictions-3__')}</p>
           </div>
           <button
             onClick={handleOpenToggle}

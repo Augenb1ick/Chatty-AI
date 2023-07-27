@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Message } from '../models/Message';
 import assistantCat from '../assets/cat.svg';
 import assistantDog from '../assets/dog.svg';
@@ -11,6 +12,7 @@ interface ChatHistoryProps {
 }
 
 const ChatHistory: FC<ChatHistoryProps> = ({ chatHistory, activeProfile }) => {
+  const { t } = useTranslation();
   const handleAssistantAva = (value: number) => {
     const avatars: { [key: number]: string } = {
       0: assistantDog,
@@ -37,6 +39,12 @@ const ChatHistory: FC<ChatHistoryProps> = ({ chatHistory, activeProfile }) => {
 
   return (
     <div className='dialogHistory'>
+      <div className='chat-message_assistant-container'>
+        <img className='ava' src={handleAssistantAva(activeProfile)} />
+        <div className='chat-message chat-message__assistant'>
+          {t('__Welcome message__')}
+        </div>
+      </div>
       {chatHistory.map((message, index) => {
         if (message.role === 'user') {
           return userChatMessage(message, index);
