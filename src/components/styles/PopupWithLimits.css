@@ -8,12 +8,13 @@
 .popup__answer {
   padding: 32px;
   margin: 0;
-  background-color: #F9F8F9;
-  box-shadow: 6px 6px 20px 0px rgba(251, 223, 247, 0.50), -4px -4px 20px 0px rgba(175, 219, 251, 0.50);
+  background-color: #f9f8f9;
+  box-shadow: 6px 6px 20px 0px rgba(251, 223, 247, 0.5),
+    -4px -4px 20px 0px rgba(175, 219, 251, 0.5);
 
-  color: #1E1E1E;
+  color: #1e1e1e;
   text-align: center;
-  font-family: Onest;
+  font-family: 'Onest';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -27,7 +28,7 @@
   border-radius: 24px;
   border: none;
   color: #fff;
-  font-family: Onest;
+  font-family: 'Onest';
   font-size: 14px;
   font-style: normal;
   font-weight: 700;

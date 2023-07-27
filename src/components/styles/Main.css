@@ -18,7 +18,7 @@
 .main__title {
   max-width: 550px;
   text-align: center;
-  font-family: Product Sans;
+  font-family: 'Roboto';
   font-size: 48px;
   font-style: normal;
   font-weight: 400;
@@ -35,7 +35,7 @@
   border-radius: 24px;
   border: none;
   color: #fff;
-  font-family: Onest;
+  font-family: 'Onest';
   font-size: 14px;
   font-style: normal;
   font-weight: 700;

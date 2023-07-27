@@ -19,8 +19,8 @@ const Main: FC<Main> = ({
   isFaqOpened,
   activeProfile,
 }) => {
-const { t } = useTranslation();  
-const handleScroll = () => {
+  const { t } = useTranslation();
+  const handleScroll = () => {
     window.scroll({
       top: window.innerHeight,
       behavior: 'smooth',
@@ -42,9 +42,7 @@ const handleScroll = () => {
   return (
     <div className='main'>
       <img className='main__img' src={handleAssistantAva(activeProfile)} />
-      <h1 className='main__title'>
-        {t('__Твой верный ...__')}
-      </h1>
+      <h1 className='main__title'>{t('__Твой верный ...__')}</h1>
       <div className='main__search-container'>
         <ChatBotSearch onMicroClick={onMicroClick} isClicked={isClicked} />
       </div>
