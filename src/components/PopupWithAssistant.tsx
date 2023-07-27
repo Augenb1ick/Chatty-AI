@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import doggy from '../assets/dog.svg';
-import kitty from '../assets/cat.svg';
-import parrot from '../assets/bird.svg';
+import doggy from '../images/dog.svg';
+import kitty from '../images/cat.svg';
+import parrot from '../images/bird.svg';
 import './styles/PopupWithAssistant.css';
 import usePopupClose from '../hooks/usePopupClose';
 import PopupWithForm from './PopupWithForm';

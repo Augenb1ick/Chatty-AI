@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import './styles/Header.css';
-import logo from '../assets/logo.svg';
-import arrowUp from '../assets/arrow-up.svg';
+import logo from '../images/logo.svg';
+import arrowUp from '../images/arrow-up.svg';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import doggy from '../assets/dog.svg';
-import kitty from '../assets/cat.svg';
-import parrot from '../assets/bird.svg';
+import doggy from '../images/dog.svg';
+import kitty from '../images/cat.svg';
+import parrot from '../images/bird.svg';
 
 interface HeaderProps {
   handleChangeAssistant: () => void;

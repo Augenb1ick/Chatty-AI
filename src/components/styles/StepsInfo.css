@@ -1,4 +1,4 @@
-.stepsInfo{
+.stepsInfo {
   display: grid;
   margin-bottom: 120px;
 }
@@ -14,7 +14,7 @@
   outline: none;
 }*/
 
-.stepsInfo__MainDescription{
+.stepsInfo__MainDescription {
   margin: 120px 0 96px 150px;
   max-width: 560px;
   color: #000;
@@ -24,13 +24,13 @@
   line-height: 48px;
 }
 
-.stepsInfo__points{
+.stepsInfo__points {
   margin: 0 150px;
 }
 
-.stepsInfo__points-steps{
+.stepsInfo__points-steps {
   display: flex;
-  background: url('../../assets/curve-line.svg') no-repeat;
+  background: url('../../images/curve-line.svg') no-repeat;
   background-position: bottom 70px left 105px;
   background-size: 873px;
   display: flex;
@@ -55,7 +55,7 @@
   width: 270px;
 }
 
-.stepsInfo__points-step:nth-child(2n+1) {
+.stepsInfo__points-step:nth-child(2n + 1) {
   margin-top: 85px;
 }
 
@@ -63,7 +63,7 @@
   margin-bottom: 64px;
 }
 
-.stepsInfo__ellipse{
+.stepsInfo__ellipse {
   display: flex;
   justify-content: center;
   justify-self: center;
@@ -72,8 +72,9 @@
   height: 80px;
   border-radius: 50%;
   background: #fff;
-  box-shadow: 6px 6px 20px 0px rgba(232, 140, 155, 0.30), -4px -4px 20px 0px rgba(143, 202, 237, 0.30);
-  
+  box-shadow: 6px 6px 20px 0px rgba(232, 140, 155, 0.3),
+    -4px -4px 20px 0px rgba(143, 202, 237, 0.3);
+
   color: #000;
   font-size: 40px;
   font-style: normal;
@@ -89,19 +90,18 @@
 
 @media screen and (max-width: 1370px) {
   .stepsInfo__points-steps {
-    background-size: 800px
+    background-size: 800px;
   }
 }
 
 @media screen and (max-width: 1290px) {
   .stepsInfo__points-steps {
-    background-size: 720px
+    background-size: 720px;
   }
 }
 
 @media screen and (max-width: 1230px) {
   .stepsInfo__points-steps {
-    background-size: 65
-    0px
+    background-size: 65 0px;
   }
 }

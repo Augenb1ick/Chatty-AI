@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Message } from '../models/Message';
-import assistantCat from '../assets/cat.svg';
-import assistantDog from '../assets/dog.svg';
-import assistantBird from '../assets/bird.svg';
+import assistantCat from '../images/cat.svg';
+import assistantDog from '../images/dog.svg';
+import assistantBird from '../images/bird.svg';
 import './styles/ChatHistory.css';
 
 interface ChatHistoryProps {

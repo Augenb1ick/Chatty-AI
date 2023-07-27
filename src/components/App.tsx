@@ -1,14 +1,14 @@
 import { FC, useState, useEffect } from 'react';
 import { useSpeechRecognition } from 'react-speech-recognition';
 import { useTranslation } from 'react-i18next';
-import Header from './components/Header';
-import Chatbot from './components/Chatbot';
-import Main from './components/Main';
-import StepsInfo from './components/StepsInfo';
-import PopupWithAssistant from './components/PopupWithAssistant';
-import PopupWithLimits from './components/PopupWithLimits';
-import './components/styles/App.css';
-import Footer from './components/Footer';
+import Header from './Header';
+import Chatbot from './Chatbot';
+import Main from './Main';
+import StepsInfo from './StepsInfo';
+import PopupWithAssistant from './PopupWithAssistant';
+import PopupWithLimits from './PopupWithLimits';
+import './styles/App.css';
+import Footer from './Footer';
 
 const App: FC = () => {
   const { t } = useTranslation();

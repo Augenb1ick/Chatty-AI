@@ -6,7 +6,7 @@
 }
 
 .popup__AssistantButton {
-  opacity: .6;
+  opacity: 0.6;
   padding: 0;
   border: none;
   border-radius: 50%;
@@ -17,5 +17,6 @@
 .popup__AssistantButton_active {
   /*background: url('../../assets/ellipse.svg') center no-repeat;*/
   opacity: 1 !important;
-  box-shadow: 6px 6px 20px 0px rgba(251, 223, 247, 0.50), -4px -4px 20px 0px rgba(175, 219, 251, 0.50);
+  box-shadow: 6px 6px 20px 0px rgba(251, 223, 247, 0.5),
+    -4px -4px 20px 0px rgba(175, 219, 251, 0.5);
 }

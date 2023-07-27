@@ -1,9 +1,9 @@
 import usePopupClose from '../hooks/usePopupClose';
 import PopupWithForm from './PopupWithForm';
 import './styles/PopupWithLimits.css';
-import assistantCat from '../assets/bigCat.svg';
-import assistantDog from '../assets/bigDog.svg';
-import assistantBird from '../assets/bigBird.svg';
+import assistantCat from '../images/bigCat.svg';
+import assistantDog from '../images/bigDog.svg';
+import assistantBird from '../images/bigBird.svg';
 import { FC } from 'react';
 
 interface PopupWithLimitsProps {
