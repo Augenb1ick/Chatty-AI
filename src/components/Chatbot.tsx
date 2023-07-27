@@ -14,12 +14,19 @@ interface ChatBot {
   isMicroOn: boolean;
   isFaqOpened: boolean;
   activeProfile: number;
+  microIsTurnedOff: (value: boolean) => void;
 }
 
-const Chatbot: FC<ChatBot> = ({ isMicroOn, isFaqOpened, activeProfile }) => {
+const Chatbot: FC<ChatBot> = ({
+  isMicroOn,
+  isFaqOpened,
+  activeProfile,
+  microIsTurnedOff,
+}) => {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
   const { t } = useTranslation();
-  const { transcript, listening, resetTranscript } = useSpeechRecognition();
+  const { transcript, listening, resetTranscript, isMicrophoneAvailable } =
+    useSpeechRecognition();
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -50,6 +57,10 @@ const Chatbot: FC<ChatBot> = ({ isMicroOn, isFaqOpened, activeProfile }) => {
         return 'Оливер';
     }
   }
+
+  const handleMicroisTurnedOff = () => {
+    microIsTurnedOff(isMicrophoneAvailable);
+  };
 
   useEffect(() => {
     isMicroOn && startListening();
@@ -178,7 +189,10 @@ const Chatbot: FC<ChatBot> = ({ isMicroOn, isFaqOpened, activeProfile }) => {
           <div className='chatBtns'>
             <button
               onClick={() => {
-                startListening();
+                if (isMicrophoneAvailable) {
+                  startListening();
+                }
+                handleMicroisTurnedOff();
               }}
               className='microBtn'
               type='button'

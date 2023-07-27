@@ -1,5 +1,6 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useSpeechRecognition } from 'react-speech-recognition';
+import { useTranslation } from 'react-i18next';
 import Header from './components/Header';
 import Chatbot from './components/Chatbot';
 import Main from './components/Main';
@@ -10,13 +11,38 @@ import './components/styles/App.css';
 import Footer from './components/Footer';
 
 const App: FC = () => {
-  //const [text, setText] = useState('');
+  const { t } = useTranslation();
   const [isOpenAssistantPopup, setIsOpenAssistantPopup] = useState(false);
   const [isOpenPopupWithLimits, setIsOpenPopupWithLimits] = useState(false);
   const [activeProfile, setActiveProfile] = useState(0);
+  const [popupText, setPopupText] = useState('');
+  const [popupButtonText, setPopupButtonText] = useState('');
+  const [isClicked, setIsClicked] = useState(false);
+  const [isMicroClicked, setIsMicroClicked] = useState(false);
+  const [isFaqOpened, setIsFaqOpened] = useState(false);
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
   const { isMicrophoneAvailable } = useSpeechRecognition();
 
-  const onSelectedProfile = (index: any) => {
+  useEffect(() => {
+    const handleOnlineStatusChange = () => {
+      setIsOnline(navigator.onLine);
+    };
+
+    window.addEventListener('online', handleOnlineStatusChange);
+    window.addEventListener('offline', handleOnlineStatusChange);
+
+    return () => {
+      window.removeEventListener('online', handleOnlineStatusChange);
+      window.removeEventListener('offline', handleOnlineStatusChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    !isOnline && handlePopupInternetOpen();
+  }, [isOnline]);
+
+  const onSelectedProfile = (index: number) => {
     setActiveProfile(index);
   };
 
@@ -29,13 +55,21 @@ const App: FC = () => {
     setIsOpenPopupWithLimits(false);
   };
 
-  const [isClicked, setIsClicked] = useState(false);
-  const [isMicroClicked, setIsMicroClicked] = useState(false);
-  const [isFaqOpened, setIsFaqOpened] = useState(false);
-
   const handleRerender = (value: boolean) => {
     setIsClicked(value);
     setIsFaqOpened(false);
+  };
+
+  const handlePopupMicroOpen = (value: boolean) => {
+    setPopupText(t('__Извините, ваш микрофон...__'));
+    setPopupButtonText(t('__ПОВТОРИТЬ__'));
+    setIsOpenPopupWithLimits(value);
+  };
+
+  const handlePopupInternetOpen = () => {
+    setPopupText(t('__Извините, ваш интернет...__'));
+    setPopupButtonText(t('__ПОПРОБОВАТЬ ПОЗЖЕ__'));
+    setIsOpenPopupWithLimits(true);
   };
 
   const handleMicroClick = (value: boolean) => {
@@ -43,7 +77,7 @@ const App: FC = () => {
       setIsMicroClicked(value);
       return;
     }
-    setIsOpenPopupWithLimits(true);
+    handlePopupMicroOpen(value);
   };
 
   const handleFaqOpen = (value: boolean) => {
@@ -65,6 +99,7 @@ const App: FC = () => {
           activeProfile={activeProfile}
           isMicroOn={isMicroClicked}
           isFaqOpened={isFaqOpened}
+          microIsTurnedOff={handlePopupMicroOpen}
         />
       ) : (
         <Main
@@ -86,6 +121,9 @@ const App: FC = () => {
         isOpen={isOpenPopupWithLimits}
         onClose={closePopups}
         textButton={'ПОВТОРИТЬ'}
+        popupText={popupText}
+        popupButtonText={popupButtonText}
+        activeProfile={activeProfile}
       />
     </div>
   );

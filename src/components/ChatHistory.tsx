@@ -12,15 +12,13 @@ interface ChatHistoryProps {
 
 const ChatHistory: FC<ChatHistoryProps> = ({ chatHistory, activeProfile }) => {
   const handleAssistantAva = (value: number) => {
-    if (value === 0) {
-      return assistantDog;
-    }
-    if (value === 1) {
-      return assistantCat;
-    }
-    if (value === 2) {
-      return assistantBird;
-    } else return assistantDog;
+    const avatars: { [key: number]: string } = {
+      0: assistantDog,
+      1: assistantCat,
+      2: assistantBird,
+    };
+
+    return avatars[value] || assistantDog;
   };
   const userChatMessage = (message: Message, index: number) => (
     <div key={index} className='chat-message_user-container'>

@@ -9,5 +9,8 @@
   "__Узнай больше...__": "LEARN MORE",
   "__Спросить ассистента...__": "Type your question",
   "__Сервис для...__": "LTD PAWsistant — Service for pet owners",
-  "__Извините, ваш голос...__": "Sorry, your voice was not recognized,\n can't help you now"
+  "__Извините, ваш микрофон...__": "Sorry, your microphone is off,\n turn it on and try again",
+  "__Извините, ваш интернет...__": "Sorry, your internet connection\n is unstable, please try again later",
+  "__ПОВТОРИТЬ__": "TRY AGAIN",
+  "__ПОПРОБОВАТЬ ПОЗЖЕ__": "TRY AGAIN LATER"
 }
