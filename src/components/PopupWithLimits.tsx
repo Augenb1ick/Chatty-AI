@@ -2,7 +2,7 @@ import { FC } from 'react';
 import usePopupClose from '../hooks/usePopupClose';
 import PopupWithForm from './PopupWithForm';
 import './styles/PopupWithLimits.css';
-import assistantCat from '../images/bigCat.svg';
+import assistantCat from '../images/BigKitty.svg';
 import assistantDog from '../images/bigDog.svg';
 import assistantBird from '../images/bigBird.svg';
 
