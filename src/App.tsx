@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { useSpeechRecognition } from 'react-speech-recognition';
 import Header from './components/Header';
 import Chatbot from './components/Chatbot';
 import Main from './components/Main';
@@ -13,6 +14,7 @@ const App: FC = () => {
   const [isOpenAssistantPopup, setIsOpenAssistantPopup] = useState(false);
   const [isOpenPopupWithLimits, setIsOpenPopupWithLimits] = useState(false);
   const [activeProfile, setActiveProfile] = useState(0);
+  const { isMicrophoneAvailable } = useSpeechRecognition();
 
   const onSelectedProfile = (index: any) => {
     setActiveProfile(index);
@@ -36,11 +38,12 @@ const App: FC = () => {
     setIsFaqOpened(false);
   };
 
-  function clickForButton() {
-    setIsOpenPopupWithLimits(true);
-  }
   const handleMicroClick = (value: boolean) => {
-    setIsMicroClicked(value);
+    if (!isMicrophoneAvailable) {
+      setIsMicroClicked(value);
+      return;
+    }
+    setIsOpenPopupWithLimits(true);
   };
 
   const handleFaqOpen = (value: boolean) => {
@@ -52,9 +55,10 @@ const App: FC = () => {
     <div className='App'>
       <Header
         activeProfile={activeProfile}
-        handleChangeAssistant={handleChangeAssistant} 
-        handleLogoClick={() => {setIsClicked(false)}}
-        clickForButton={clickForButton}
+        handleChangeAssistant={handleChangeAssistant}
+        handleLogoClick={() => {
+          setIsClicked(false);
+        }}
       />
       {isClicked ? (
         <Chatbot
@@ -72,16 +76,16 @@ const App: FC = () => {
       )}
       {!isClicked ? <StepsInfo /> : null}
       {!isClicked ? <Footer /> : null}
-      <PopupWithAssistant 
+      <PopupWithAssistant
         activeProfile={activeProfile}
         onSelectedProfile={onSelectedProfile}
         isOpen={isOpenAssistantPopup}
         onClose={closePopups}
       />
-      <PopupWithLimits 
-        isOpen={isOpenPopupWithLimits} 
+      <PopupWithLimits
+        isOpen={isOpenPopupWithLimits}
         onClose={closePopups}
-        textButton={"ПОВТОРИТЬ"} 
+        textButton={'ПОВТОРИТЬ'}
       />
     </div>
   );

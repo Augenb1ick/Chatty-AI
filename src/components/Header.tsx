@@ -9,7 +9,11 @@ import doggy from '../assets/dog.svg';
 import kitty from '../assets/cat.svg';
 import parrot from '../assets/bird.svg';
 
-const Header = ( {handleChangeAssistant, handleLogoClick, activeProfile, clickForButton} :any) => {
+const Header = ({
+  handleChangeAssistant,
+  handleLogoClick,
+  activeProfile,
+}: any) => {
   const { i18n } = useTranslation();
 
   const imageData: any = [
@@ -36,7 +40,7 @@ const Header = ( {handleChangeAssistant, handleLogoClick, activeProfile, clickFo
       );
     });
 
-    const changeLanguage = (language:any) => {
+  const changeLanguage = (language: any) => {
     //const lang = e.target.dataset.lang;
     //console.log(lang)
     i18n.changeLanguage(language);
@@ -47,7 +51,7 @@ const Header = ( {handleChangeAssistant, handleLogoClick, activeProfile, clickFo
         localStorage.removeItem('ru')
         localStorage.setItem('i18nextLng', 'en')
       }*/
-  }
+  };
 
   return (
     <div className='header'>
@@ -62,28 +66,30 @@ const Header = ( {handleChangeAssistant, handleLogoClick, activeProfile, clickFo
       <div className='header__navBar'>
         {/*<Link to='/reminders' className="header__navBar-reminders">{reminders}</Link>*/}
         <button
-          data-lang="en"
-          className="header__button-language"
-          onClick={()=>changeLanguage("en")}
+          data-lang='en'
+          className='header__button-language'
+          onClick={() => changeLanguage('en')}
         >
           EN
-          <img className="header__button-arrow" src={arrowUp} alt="изображение стрелки"/>
+          <img
+            className='header__button-arrow'
+            src={arrowUp}
+            alt='изображение стрелки'
+          />
         </button>
         <button
-          data-lang="ru"
-          className="header__button-language"
-          onClick={()=>changeLanguage("ru")}
+          data-lang='ru'
+          className='header__button-language'
+          onClick={() => changeLanguage('ru')}
         >
           RU
-          <img className="header__button-arrow" src={arrowUp} alt="изображение стрелки"/>
+          <img
+            className='header__button-arrow'
+            src={arrowUp}
+            alt='изображение стрелки'
+          />
         </button>
-        <button
-          data-lang="en"
-          className="header__button-language"
-          onClick={clickForButton}
-        >
-          Кнопка
-        </button>
+
         {avatar}
       </div>
     </div>
