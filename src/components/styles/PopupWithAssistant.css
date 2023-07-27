@@ -1,0 +1,21 @@
+.popup__changeAssistant {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 32px 33px 0 33px;
+}
+
+.popup__AssistantButton {
+  opacity: .6;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+}
+
+.popup__AssistantButton_active {
+  /*background: url('../../assets/ellipse.svg') center no-repeat;*/
+  opacity: 1 !important;
+  box-shadow: 6px 6px 20px 0px rgba(251, 223, 247, 0.50), -4px -4px 20px 0px rgba(175, 219, 251, 0.50);
+}

@@ -7,6 +7,7 @@ import './styles/Chatbot.css';
 import './styles/ChatBotSearch.css';
 import { Message } from '../models/Message';
 import ChatHistory from './ChatHistory';
+import { useTranslation } from 'react-i18next';
 import FAQ from './FAQ';
 
 interface ChatBot {
@@ -17,6 +18,7 @@ interface ChatBot {
 
 const Chatbot: FC<ChatBot> = ({ isMicroOn, isFaqOpened, activeProfile }) => {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+  const { t } = useTranslation();
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
@@ -169,7 +171,7 @@ const Chatbot: FC<ChatBot> = ({ isMicroOn, isFaqOpened, activeProfile }) => {
             value={
               loading ? 'Генерирую ответ...' : transcript ? transcript : prompt
             }
-            placeholder='Задайте ваш вопрос'
+            placeholder={t('__Спросить ассистента...__')}
             onChange={handleInputChange}
             disabled={loading}
           ></input>

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import './styles/Main.css';
 import ChatBotSearch from './ChatBotSearch';
+import { useTranslation } from 'react-i18next';
 import assistantCat from '../images/cat-main.png';
 import assistantDog from '../images/dog-main.png';
 import assistantBird from '../images/bird-main.png';
@@ -18,7 +19,8 @@ const Main: FC<Main> = ({
   isFaqOpened,
   activeProfile,
 }) => {
-  const handleScroll = () => {
+const { t } = useTranslation();  
+const handleScroll = () => {
     window.scroll({
       top: window.innerHeight,
       behavior: 'smooth',
@@ -41,7 +43,7 @@ const Main: FC<Main> = ({
     <div className='main'>
       <img className='main__img' src={handleAssistantAva(activeProfile)} />
       <h1 className='main__title'>
-        Твой верный помощник по уходу за животными
+        {t('__Твой верный ...__')}
       </h1>
       <div className='main__search-container'>
         <ChatBotSearch onMicroClick={onMicroClick} isClicked={isClicked} />
@@ -53,7 +55,7 @@ const Main: FC<Main> = ({
         }}
         className='main__button'
       >
-        УЗНАЙ БОЛЬШЕ ОБО МНЕ
+        {t('__Узнай больше...__')}
       </button>
       <button onClick={handleScroll} className='main__down-button'></button>
     </div>

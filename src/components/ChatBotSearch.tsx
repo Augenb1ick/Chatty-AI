@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import './styles/ChatBotSearch.css';
+import { useTranslation } from 'react-i18next';
 
 interface ChatBotSearch {
   isClicked: (value: boolean) => void;
@@ -7,11 +8,13 @@ interface ChatBotSearch {
 }
 
 const ChatBotSearch: FC<ChatBotSearch> = ({ onMicroClick, isClicked }) => {
+  const { t } = useTranslation();
+
   return (
     <form className='inputArea'>
       <input
         className='chatInput'
-        placeholder='Задайте ваш вопрос'
+        placeholder={t('__Спросить ассистента...__')}
         onClick={() => {
           isClicked(true);
         }}

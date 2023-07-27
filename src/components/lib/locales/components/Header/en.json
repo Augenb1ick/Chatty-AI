@@ -1,3 +1,13 @@
 {
-  "__language__": "English"
+  "__language__": "English",
+  "__hello__": "Hello world!",
+  "__3Steps__": "3 simple steps\n to make your pet happier",
+  "__TellMeOne__": "Tell me about\n  your pet",
+  "__TellMeTwo__": "Tell me about the problem\n or ask a question that interests you",
+  "__Make__": "Make your pet\n happier",
+  "__Твой верный ...__": "Your faithful animal\n care assistant",
+  "__Узнай больше...__": "Type your question",
+  "__Спросить ассистента...__":"Ask the assistant",
+  "__Сервис для...__":"LTD PAWsistant — Service for pet owners",
+  "__Извините, ваш голос...__":"Sorry, your voice was not recognized,\n can't help you now"
 }
