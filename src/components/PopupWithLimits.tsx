@@ -3,8 +3,8 @@ import PopupWithForm from './PopupWithForm';
 import { useTranslation } from 'react-i18next';
 import './styles/PopupWithLimits.css';
 import bigDoggy from '../assets/bigDog.svg';
-import bigKitty from '../assets/bigCat.svg';
-import bigBirdie from '../assets/bigBird.svg';
+//import bigKitty from '../assets/bigCat.svg';
+//import bigBirdie from '../assets/bigBird.svg';
 
 
 /*interface popupImage {
