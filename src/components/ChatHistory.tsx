@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { Message } from '../models/Message';
-import userAva from '../images/user-ava.png';
 import assistantCat from '../assets/cat.svg';
 import assistantDog from '../assets/dog.svg';
 import assistantBird from '../assets/bird.svg';

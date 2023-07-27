@@ -24,7 +24,7 @@ const Chatbot: FC<ChatBot> = ({ isMicroOn, isFaqOpened, activeProfile }) => {
   const [chatHistory, setChatHistory] = useState<Message[]>([
     {
       role: 'system',
-      content: `Тебя зовут ${handleAssistantName(
+      content: `Тебя зовут ${getAssistantName(
         activeProfile
       )}, твоя основная специализация - экперт по вопросам домашних животных`,
     },
@@ -36,7 +36,7 @@ const Chatbot: FC<ChatBot> = ({ isMicroOn, isFaqOpened, activeProfile }) => {
   ]);
   const lastMessageRoleRef = useRef<string | null>(null);
 
-  function handleAssistantName(value: number) {
+  function getAssistantName(value: number) {
     switch (value) {
       case 0:
         return 'Оливер';
