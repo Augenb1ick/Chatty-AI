@@ -1,10 +1,10 @@
+import { FC } from 'react';
 import usePopupClose from '../hooks/usePopupClose';
 import PopupWithForm from './PopupWithForm';
 import './styles/PopupWithLimits.css';
 import assistantCat from '../images/bigCat.svg';
 import assistantDog from '../images/bigDog.svg';
 import assistantBird from '../images/bigBird.svg';
-import { FC } from 'react';
 
 interface PopupWithLimitsProps {
   isOpen: boolean;
