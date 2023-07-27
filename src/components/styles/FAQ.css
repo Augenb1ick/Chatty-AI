@@ -1,23 +1,35 @@
 .FAQ {
-  display: flex;
-  flex-direction: row;
-  color: #1e1e1e;
-  justify-content: center;
-  gap: 20px;
-  position: relative;
-  padding: 80px;
-  border-radius: 0px 0px 50px 50px;
-  border-bottom: 1px solid #d3d3d3;
-  background: rgba(217, 217, 217, 0);
-  box-shadow: 0px 4px 20px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  justify-items: center;
+  visibility: visible;
+  display: grid;
   opacity: 1;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.3s linear, visibility 0.3s;
 }
 
 .FAQ-closed {
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.5s ease;
+}
+
+.FAQ__content {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  color: #1e1e1e;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  padding-top: 80px;
+  padding-bottom: 56px;
+  border-radius: 0 0 50px 50px;
+  border-bottom: 1px solid #d3d3d3;
+  background-color: white;
+  box-shadow: 0 4px 20px 5px #0000001a;
 }
 
 .FAQ__column {
@@ -25,6 +37,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  z-index: 10;
 }
 
 .FAQ__heading {
@@ -36,6 +49,7 @@
   text-align: center;
   margin: 0;
   padding: 0;
+  z-index: 10;
 }
 
 .FAQ__text {
@@ -49,6 +63,7 @@
   min-height: 48px;
   border-radius: 12px;
   margin: 0;
+  z-index: 10;
 }
 
 .FAQ__close-btn {
@@ -69,8 +84,11 @@
   position: absolute;
   right: 32px;
   top: 32px;
+  opacity: 1;
+  transition: opacity 0.3s linear, visibility 0.3s;
 }
 
 .FAQ__open-btn_hidden {
   visibility: hidden;
+  opacity: 0;
 }

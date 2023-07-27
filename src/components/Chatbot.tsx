@@ -10,17 +10,25 @@ import ChatHistory from './ChatHistory';
 import { useTranslation } from 'react-i18next';
 import FAQ from './FAQ';
 
-const Chatbot: FC = () => {
+interface ChatBot {
+  isMicroOn: boolean;
+  isFaqOpened: boolean;
+  activeProfile: number;
+}
+
+const Chatbot: FC<ChatBot> = ({ isMicroOn, isFaqOpened, activeProfile }) => {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
   const { t } = useTranslation();
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
+
   const [chatHistory, setChatHistory] = useState<Message[]>([
     {
       role: 'system',
-      content:
-        'Тебя зовут Капибарыч, твоя основная специализация - экперт по вопросам домашних животных',
+      content: `Тебя зовут ${getAssistantName(
+        activeProfile
+      )}, твоя основная специализация - экперт по вопросам домашних животных`,
     },
     {
       role: 'assistant',
@@ -29,6 +37,23 @@ const Chatbot: FC = () => {
     },
   ]);
   const lastMessageRoleRef = useRef<string | null>(null);
+
+  function getAssistantName(value: number) {
+    switch (value) {
+      case 0:
+        return 'Оливер';
+      case 1:
+        return 'Винсет';
+      case 2:
+        return 'Густав';
+      default:
+        return 'Оливер';
+    }
+  }
+
+  useEffect(() => {
+    isMicroOn && startListening();
+  }, [isMicroOn]);
 
   useEffect(() => {
     if (transcript && listening === false) {
@@ -133,14 +158,15 @@ const Chatbot: FC = () => {
   return (
     <div className='chat-container'>
       <div className='chat'>
-        <FAQ />
+        <FAQ mainFaqOpen={isFaqOpened} />
         {listening ? <div className='bigMicro'> </div> : null}
-        <ChatHistory chatHistory={chatHistory} />
+        <ChatHistory activeProfile={activeProfile} chatHistory={chatHistory} />
         <form
           className={`inputArea ${loading ? 'gradient' : ''} `}
           onSubmit={handleSubmit}
         >
           <input
+            autoFocus
             className='chatInput'
             value={
               loading ? 'Генерирую ответ...' : transcript ? transcript : prompt

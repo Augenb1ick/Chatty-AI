@@ -14,7 +14,7 @@ const App: FC = () => {
   const [isOpenPopupWithLimits, setIsOpenPopupWithLimits] = useState(false);
   const [activeProfile, setActiveProfile] = useState(0);
 
-  const onSelectedProfile = (index:any) => {
+  const onSelectedProfile = (index: any) => {
     setActiveProfile(index);
   };
 
@@ -28,33 +28,55 @@ const App: FC = () => {
   };
 
   const [isClicked, setIsClicked] = useState(false);
+  const [isMicroClicked, setIsMicroClicked] = useState(false);
+  const [isFaqOpened, setIsFaqOpened] = useState(false);
 
   const handleRerender = (value: boolean) => {
     setIsClicked(value);
+    setIsFaqOpened(false);
   };
 
   function clickForButton() {
     setIsOpenPopupWithLimits(true);
   }
+  const handleMicroClick = (value: boolean) => {
+    setIsMicroClicked(value);
+  };
 
+  const handleFaqOpen = (value: boolean) => {
+    setIsMicroClicked(false);
+    setIsFaqOpened(value);
+  };
 
   return (
-    <div className="App">
-      <Header 
+    <div className='App'>
+      <Header
         activeProfile={activeProfile}
         handleChangeAssistant={handleChangeAssistant} 
         handleLogoClick={() => {setIsClicked(false)}}
         clickForButton={clickForButton}
       />
-      
+      {isClicked ? (
+        <Chatbot
+          activeProfile={activeProfile}
+          isMicroOn={isMicroClicked}
+          isFaqOpened={isFaqOpened}
+        />
+      ) : (
+        <Main
+          onMicroClick={handleMicroClick}
+          isClicked={handleRerender}
+          isFaqOpened={handleFaqOpen}
+          activeProfile={activeProfile}
+        />
+      )}
       {!isClicked ? <StepsInfo /> : null}
-      {isClicked ? <Chatbot /> : <Main onSeacrhClick={handleRerender} />}
       {!isClicked ? <Footer /> : null}
       <PopupWithAssistant 
-        activeProfile={activeProfile} 
+        activeProfile={activeProfile}
         onSelectedProfile={onSelectedProfile}
-        isOpen={isOpenAssistantPopup} 
-        onClose={closePopups} 
+        isOpen={isOpenAssistantPopup}
+        onClose={closePopups}
       />
       <PopupWithLimits 
         isOpen={isOpenPopupWithLimits} 

@@ -3,7 +3,7 @@
 import './styles/Header.css';
 import logo from '../assets/logo.svg';
 import arrowUp from '../assets/arrow-up.svg';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import doggy from '../assets/dog.svg';
 import kitty from '../assets/cat.svg';
@@ -13,23 +13,28 @@ const Header = ( {handleChangeAssistant, handleLogoClick, activeProfile, clickFo
   const { i18n } = useTranslation();
 
   const imageData: any = [
-    {content: doggy},
-    {content: kitty},
-    {content: parrot},
-  ]
+    { content: doggy },
+    { content: kitty },
+    { content: parrot },
+  ];
 
   const avatar = imageData
-    .filter((_tab:any, i:any) => i === activeProfile)
-    .map((tab:any, i:any) => {
+    .filter((_tab: any, i: any) => i === activeProfile)
+    .map((tab: any, i: any) => {
       return (
-        <button 
-          className="header__button-assistant"
+        <button
+          className='header__button-assistant'
           key={i}
-          onClick={handleChangeAssistant}>
-            <img className="header__profile-image" src={tab.content} alt="изображение собаки????"/>
+          onClick={handleChangeAssistant}
+        >
+          <img
+            className='header__profile-image'
+            src={tab.content}
+            alt='изображение собаки????'
+          />
         </button>
-      )
-    })
+      );
+    });
 
     const changeLanguage = (language:any) => {
     //const lang = e.target.dataset.lang;
@@ -43,13 +48,18 @@ const Header = ( {handleChangeAssistant, handleLogoClick, activeProfile, clickFo
         localStorage.setItem('i18nextLng', 'en')
       }*/
   }
-  
+
   return (
-    <div className="header">
-      <Link to ="/#">
-        <img onClick={handleLogoClick} className="header__logo" src={logo} alt="логотип"/>
+    <div className='header'>
+      <Link to='/#'>
+        <img
+          onClick={handleLogoClick}
+          className='header__logo'
+          src={logo}
+          alt='логотип'
+        />
       </Link>
-      <div className="header__navBar">
+      <div className='header__navBar'>
         {/*<Link to='/reminders' className="header__navBar-reminders">{reminders}</Link>*/}
         <button
           data-lang="en"
@@ -77,7 +87,7 @@ const Header = ( {handleChangeAssistant, handleLogoClick, activeProfile, clickFo
         {avatar}
       </div>
     </div>
-  )
+  );
 };
 
 export default Header;
