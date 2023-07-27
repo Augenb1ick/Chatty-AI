@@ -1,33 +1,30 @@
 import './styles/StepsInfo.css';
+import { useTranslation } from 'react-i18next';
 //import arrow from '../assets/arrow-big.svg';
 
-const description = {
-  main: '3 простых шага, чтобы ваш питомец стал счастливее',
-  one: `Расскажите мне о вашем питомце`,
-  two: 'Расскажите о проблеме или задайте интересующий вас вопрос',
-  three: 'Сделайте своего питомца счастливие',
-}
-
 const StepsInfo = () => {
+  
+  const { t } = useTranslation();
+  
   return (
   <div className="stepsInfo">
     {/*<img className="stepsInfo__arrow" src={arrow}/>*/}
-    <div className="stepsInfo__MainDescription">{description.main}</div>
+    <div className="stepsInfo__MainDescription">{t('__3Steps__')}</div>
     <div className="stepsInfo__points">
     {/*<img className="stepsInfo__curve-line" src={curveLine}/>*/}
       <ul className="stepsInfo__points-steps">
       
         <li className="stepsInfo__points-step">
           <div className="stepsInfo__ellipse">1</div>
-          <p className="stepsInfo__description">{description.one}</p>
+          <p className="stepsInfo__description">{t('__TellMeOne__')}</p>
         </li>
         <li className="stepsInfo__points-step">
           <div className="stepsInfo__ellipse">2</div>
-          <p className="stepsInfo__description">{description.two}</p>
+          <p className="stepsInfo__description">{t('__TellMeTwo__')}</p>
         </li>
         <li className="stepsInfo__points-step">
           <div className="stepsInfo__ellipse">3</div>
-          <p className="stepsInfo__description">{description.three}</p>
+          <p className="stepsInfo__description">{t('__Make__')}</p>
         </li>
       </ul>
     </div>

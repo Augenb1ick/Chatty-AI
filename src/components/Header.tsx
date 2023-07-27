@@ -9,8 +9,8 @@ import doggy from '../assets/dog.svg';
 import kitty from '../assets/cat.svg';
 import parrot from '../assets/bird.svg';
 
-const Header = ( {handleChangeAssistant, handleLogoClick, activeProfile} :any) => {
-  const { t } = useTranslation();
+const Header = ( {handleChangeAssistant, handleLogoClick, activeProfile, clickForButton} :any) => {
+  const { i18n } = useTranslation();
 
   const imageData: any = [
     {content: doggy},
@@ -31,14 +31,17 @@ const Header = ( {handleChangeAssistant, handleLogoClick, activeProfile} :any) =
       )
     })
 
-  function handleChangeLanguage () {
-    if (localStorage.getItem('i18nextLng') === 'en') {
+    const changeLanguage = (language:any) => {
+    //const lang = e.target.dataset.lang;
+    //console.log(lang)
+    i18n.changeLanguage(language);
+    /*if (localStorage.getItem('i18nextLng') === 'en') {
       localStorage.removeItem('en')
       localStorage.setItem('i18nextLng', 'ru')
       } else {
         localStorage.removeItem('ru')
         localStorage.setItem('i18nextLng', 'en')
-      }
+      }*/
   }
   
   return (
@@ -48,8 +51,28 @@ const Header = ( {handleChangeAssistant, handleLogoClick, activeProfile} :any) =
       </Link>
       <div className="header__navBar">
         {/*<Link to='/reminders' className="header__navBar-reminders">{reminders}</Link>*/}
-        <button className="header__button-language" onClick={handleChangeLanguage}>{t('__language__')}
+        <button
+          data-lang="en"
+          className="header__button-language"
+          onClick={()=>changeLanguage("en")}
+        >
+          EN
           <img className="header__button-arrow" src={arrowUp} alt="изображение стрелки"/>
+        </button>
+        <button
+          data-lang="ru"
+          className="header__button-language"
+          onClick={()=>changeLanguage("ru")}
+        >
+          RU
+          <img className="header__button-arrow" src={arrowUp} alt="изображение стрелки"/>
+        </button>
+        <button
+          data-lang="en"
+          className="header__button-language"
+          onClick={clickForButton}
+        >
+          Кнопка
         </button>
         {avatar}
       </div>

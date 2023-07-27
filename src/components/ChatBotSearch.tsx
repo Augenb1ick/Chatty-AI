@@ -1,11 +1,13 @@
 import { FC } from 'react';
 import './styles/ChatBotSearch.css';
+import { useTranslation } from 'react-i18next';
 
 interface ChatBotSearch {
   isClicked: (value: boolean) => void;
 }
 
 const ChatBotSearch: FC<ChatBotSearch> = ({ isClicked }) => {
+  const { t } = useTranslation();
   const handleSearchClick = () => {
     isClicked(true);
   };
@@ -15,7 +17,7 @@ const ChatBotSearch: FC<ChatBotSearch> = ({ isClicked }) => {
       <input
         onClick={handleSearchClick}
         className='chatInput'
-        placeholder='Спросить ассистента'
+        placeholder={t('__Спросить ассистента...__')}
       ></input>
       <div className='chatBtns'>
         <button

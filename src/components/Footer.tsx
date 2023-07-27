@@ -1,9 +1,11 @@
 import { FC } from 'react';
 import logo from '../assets/logo.svg';
-
+import { useTranslation } from 'react-i18next';
 import './styles/Footer.css';
 
 const Footer: FC = () => {
+  const { t } = useTranslation()
+
   return (
     <div className="footer">
       <img className="footer__logo" src={logo} alt="логотип"/>
@@ -11,7 +13,7 @@ const Footer: FC = () => {
         <li><p className="footer__text footer__text_contacts">Здесь будет текст</p></li>
         <li><p className="footer__text footer__text_contacts">Здесь будет текст</p></li>
       </ul>
-      <p className="footer__text footer__text_copyright">&copy; 2023 ООО PAWsistant — Сервис для владельцев домашних питомцев</p>
+      <p className="footer__text footer__text_copyright">&copy; {t("__Сервис для...__")}</p>
     </div>
   )
 };

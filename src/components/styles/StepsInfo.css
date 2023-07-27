@@ -50,12 +50,17 @@
 
 .stepsInfo__points-step {
   display: grid;
+  justify-content: center;
   flex-direction: column;
   width: 270px;
 }
 
 .stepsInfo__points-step:nth-child(2n+1) {
   margin-top: 85px;
+}
+
+.stepsInfo__points-step:nth-child(2n) {
+  margin-bottom: 64px;
 }
 
 .stepsInfo__ellipse{
@@ -78,7 +83,8 @@
 
 .stepsInfo__description {
   display: flex;
-  text-align: center
+  text-align: center;
+  margin: 24px 0 0 0;
 }
 
 @media screen and (max-width: 1370px) {
