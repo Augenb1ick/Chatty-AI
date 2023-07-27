@@ -1,23 +1,29 @@
+import { FC } from 'react';
 import doggy from '../assets/dog.svg';
-//import doggyA from '../assets/dog avatar-active.svg';
 import kitty from '../assets/cat.svg';
 import parrot from '../assets/bird.svg';
 import './styles/PopupWithAssistant.css';
-import usePopupClose from "../hooks/usePopupClose"
+import usePopupClose from '../hooks/usePopupClose';
 import PopupWithForm from './PopupWithForm';
 
-interface profileData {
-  [image: string]: any
-  active: boolean
+type profileData = {
+  image: string;
+  active: boolean;
+};
+
+interface PopupWithAssistantProps {
+  isOpen: boolean;
+  onClose: () => void;
+  activeProfile: number;
+  onSelectedProfile: (i: number) => void;
 }
 
-const PopupWithAssistant = ({ isOpen, onClose, activeProfile, onSelectedProfile }:{
-  isOpen: boolean
-  onClose: any
-  activeProfile: any
-  onSelectedProfile: any
+const PopupWithAssistant: FC<PopupWithAssistantProps> = ({
+  isOpen,
+  onClose,
+  activeProfile,
+  onSelectedProfile,
 }) => {
-
   const profileData: profileData[] = [
     {
       image: doggy,
@@ -31,30 +37,35 @@ const PopupWithAssistant = ({ isOpen, onClose, activeProfile, onSelectedProfile 
       image: parrot,
       active: false,
     },
-  ]
+  ];
 
-  const profileImage = profileData.map((tab:any, i:any) => {
+  const profileImage = profileData.map((tab: profileData, i: number) => {
     return (
-      <button 
-        type ="button" 
-        aria-label="changeAssistantButton"
-        className={`popup__AssistantButton ${i === activeProfile ? 'popup__AssistantButton_active' : ''}`}
+      <button
+        type='button'
+        aria-label='changeAssistantButton'
+        className={`popup__AssistantButton ${
+          i === activeProfile ? 'popup__AssistantButton_active' : ''
+        }`}
         key={i}
-        onClick={() => onSelectedProfile(i)} >
-          <img src={tab.image} alt= "изображение животного"/>
-      </button>  
+        onClick={() => onSelectedProfile(i)}
+      >
+        <img src={tab.image} alt='изображение животного' />
+      </button>
     );
   });
 
-  usePopupClose(isOpen, onClose)
-  
+  usePopupClose(isOpen, onClose);
+
   return (
-    <PopupWithForm title={'Выбери своего помощника'} isOpen={isOpen} onClose={onClose} >
-      <div className="popup__changeAssistant">
-        {profileImage}
-      </div>
-    </PopupWithForm >
-  )
+    <PopupWithForm
+      title={'Выбери своего помощника'}
+      isOpen={isOpen}
+      onClose={onClose}
+    >
+      <div className='popup__changeAssistant'>{profileImage}</div>
+    </PopupWithForm>
+  );
 };
 
 export default PopupWithAssistant;

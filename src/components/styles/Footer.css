@@ -1,6 +1,8 @@
 .footer {
   padding: 120px 0 120px 150px;
-  background: #F9F8F9;
+  background: #f9f8f9;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer__info {
@@ -10,12 +12,13 @@
 }
 
 .footer__text {
-  color: #1E1E1E;
-  
+  color: #1e1e1e;
   font-size: 18px;
   font-style: normal;
-
   line-height: 24px;
+  text-decoration: none;
+  margin-top: 64px;
+  margin-bottom: 64px;
 }
 
 .footer__text_contacts {
@@ -26,4 +29,14 @@
 .footer__text_copyright {
   font-family: 'Onest';
   font-weight: 400;
+  color: #1e1e1e;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 24px;
+  margin: 0;
+}
+
+.footer__logo {
+  width: 141px;
+  height: 32px;
 }

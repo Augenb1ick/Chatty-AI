@@ -1,5 +1,4 @@
-//import { useState } from 'react';
-//import { FC } from 'react';
+import { FC } from 'react';
 import './styles/Header.css';
 import logo from '../assets/logo.svg';
 import arrowUp from '../assets/arrow-up.svg';
@@ -9,22 +8,32 @@ import doggy from '../assets/dog.svg';
 import kitty from '../assets/cat.svg';
 import parrot from '../assets/bird.svg';
 
-const Header = ({
+interface HeaderProps {
+  handleChangeAssistant: () => void;
+  handleLogoClick: () => void;
+  activeProfile: number;
+}
+
+const Header: FC<HeaderProps> = ({
   handleChangeAssistant,
   handleLogoClick,
   activeProfile,
-}: any) => {
+}) => {
   const { i18n } = useTranslation();
 
-  const imageData: any = [
+  type ImageData = {
+    content: string;
+  };
+
+  const imageData: ImageData[] = [
     { content: doggy },
     { content: kitty },
     { content: parrot },
   ];
 
-  const avatar = imageData
-    .filter((_tab: any, i: any) => i === activeProfile)
-    .map((tab: any, i: any) => {
+  const avatar: JSX.Element[] = imageData
+    .filter((_tab: ImageData, i: number) => i === activeProfile)
+    .map((tab: ImageData, i: number) => {
       return (
         <button
           className='header__button-assistant'
@@ -40,7 +49,7 @@ const Header = ({
       );
     });
 
-  const changeLanguage = (language: any) => {
+  const changeLanguage = (language: string) => {
     //const lang = e.target.dataset.lang;
     //console.log(lang)
     i18n.changeLanguage(language);
@@ -89,7 +98,6 @@ const Header = ({
             alt='изображение стрелки'
           />
         </button>
-
         {avatar}
       </div>
     </div>

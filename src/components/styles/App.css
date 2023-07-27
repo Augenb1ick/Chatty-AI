@@ -22,3 +22,12 @@ button {
 button:hover {
   opacity: 0.6;
 }
+
+a {
+  transition: opacity 0.4s ease;
+  cursor: pointer;
+}
+
+a:hover {
+  opacity: 0.6;
+}
