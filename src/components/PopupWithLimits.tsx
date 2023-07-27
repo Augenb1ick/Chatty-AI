@@ -3,8 +3,8 @@ import usePopupClose from '../hooks/usePopupClose';
 import PopupWithForm from './PopupWithForm';
 import './styles/PopupWithLimits.css';
 import assistantCat from '../images/BigKitty.svg';
-import assistantDog from '../images/bigDog.svg';
-import assistantBird from '../images/bigBird.svg';
+import assistantDog from '../images/bigDoggy.svg';
+import assistantBird from '../images/bigBirdy.svg';
 
 interface PopupWithLimitsProps {
   isOpen: boolean;
