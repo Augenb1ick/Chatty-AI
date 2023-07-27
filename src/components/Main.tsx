@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import './styles/Main.css';
 import ChatBotSearch from './ChatBotSearch';
-import assistantCat from '../assets/cat.svg';
-import assistantDog from '../assets/dog.svg';
-import assistantBird from '../assets/bird.svg';
+import assistantCat from '../images/cat-main.png';
+import assistantDog from '../images/dog-main.png';
+import assistantBird from '../images/bird-main.png';
 
 interface Main {
   onMicroClick: (value: boolean) => void;
