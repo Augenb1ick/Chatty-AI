@@ -1,24 +1,29 @@
 .header {
   display: flex;
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 5;
-  padding: 22px 150px;
+  padding: 10px 150px;
   justify-content: space-between;
   background: #ffffff;
   box-shadow: 6px 6px 20px 0px rgba(232, 140, 155, 0.3),
     -4px -4px 20px 0px rgba(143, 202, 237, 0.3);
 }
 
-.header__navBar {
+.header__link {
+  display: flex;
+}
+
+.header__navlang {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .header__button-language {
   display: flex;
   justify-content: center;
   align-content: center;
-  margin-right: 39px;
   padding: 0;
   flex-wrap: wrap;
   border-radius: 3px;
@@ -26,6 +31,20 @@
   background: #ffffff;
   border: none;
   cursor: pointer;
+
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.header__button-language_active {
+  font-weight: 600;
+}
+
+.separator {
+  margin: 0 10px;
 }
 
 .header__button-arrow {
@@ -34,23 +53,27 @@
 
 .header__profile-image {
   display: block;
+  width: 60px;
+  height: 60px;
 }
 
 .header__profile-image {
   box-sizing: border-box;
   object-fit: cover;
-  max-width: 36px;
-  min-height: 36px;
-  border-radius: 60px;
+  max-width: 100%;
 }
 
 .header__button-assistant {
   display: flex;
   background: #d9d9d9;
-  height: 36px;
-  width: 36px;
+  height: 60px;
+  width: 60px;
+  margin-left: 24px;
   padding: 0;
   border-radius: 50%;
   border: none;
   cursor: pointer;
+  overflow: hidden;
+  -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
 }

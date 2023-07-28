@@ -2,9 +2,10 @@
 @import url('../../vendor/fonts.css');
 
 .App {
+  display: inline;
   background-color: #fff;
   color: rgb(0, 0, 0);
-  font-family: 'Roboto', 'Onest-medium', 'Onest-regular', 'Inter', Arial,
+  font-family: 'Inter', 'Product-Sans','Roboto', 'Onest-medium', 'Onest-regular', Arial,
     Helvetica, sans-serif;
   box-sizing: border-box;
   width: 100%;
