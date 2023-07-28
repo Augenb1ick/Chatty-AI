@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import './styles/Header.css';
 import logo from '../images/logo.svg';
-import arrowUp from '../images/arrow-up.svg';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import doggy from '../images/dog.svg';
-import kitty from '../images/cat.svg';
+//import kitty from '../images/cat.svg';
+import kitty from '../images/vinny.jpg';
 import parrot from '../images/bird.svg';
 
 interface HeaderProps {
@@ -20,6 +20,7 @@ const Header: FC<HeaderProps> = ({
   activeProfile,
 }) => {
   const { i18n } = useTranslation();
+  const [currentLang, setCurrentLang] = useState('false');
 
   type ImageData = {
     content: string;
@@ -50,9 +51,8 @@ const Header: FC<HeaderProps> = ({
     });
 
   const changeLanguage = (language: string) => {
-    //const lang = e.target.dataset.lang;
-    //console.log(lang)
     i18n.changeLanguage(language);
+    setCurrentLang(language)
     /*if (localStorage.getItem('i18nextLng') === 'en') {
       localStorage.removeItem('en')
       localStorage.setItem('i18nextLng', 'ru')
@@ -64,7 +64,7 @@ const Header: FC<HeaderProps> = ({
 
   return (
     <div className='header'>
-      <Link to='/#'>
+      <Link className='header__link' to='/#'>
         <img
           onClick={handleLogoClick}
           className='header__logo'
@@ -72,31 +72,27 @@ const Header: FC<HeaderProps> = ({
           alt='логотип'
         />
       </Link>
-      <div className='header__navBar'>
-        {/*<Link to='/reminders' className="header__navBar-reminders">{reminders}</Link>*/}
-        <button
-          data-lang='en'
-          className='header__button-language'
-          onClick={() => changeLanguage('en')}
-        >
-          EN
-          <img
-            className='header__button-arrow'
-            src={arrowUp}
-            alt='изображение стрелки'
-          />
-        </button>
+      <div className='header__navlang'>
         <button
           data-lang='ru'
-          className='header__button-language'
+          className={`header__button-language ${
+            currentLang === 'ru' ? 'header__button-language_active' : ''
+            }`
+          }
           onClick={() => changeLanguage('ru')}
         >
           RU
-          <img
-            className='header__button-arrow'
-            src={arrowUp}
-            alt='изображение стрелки'
-          />
+        </button>
+        <div className="separator">|</div>
+        <button
+          data-lang='en'
+          className={`header__button-language ${
+            currentLang === 'en' ? 'header__button-language_active' : ''
+            }`
+          }
+          onClick={() => changeLanguage('en')}
+        >
+          EN
         </button>
         {avatar}
       </div>

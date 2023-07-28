@@ -27,3 +27,17 @@
   font-weight: 700;
   src: url('./OnestBold1602-hint.ttf') format('ttf');
 }
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 400;
+  src: url("./Inter-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Product-Sans';
+  font-style:  normal;
+  font-weight: 400;
+  src: url("./ProductSansRegular.woff") format("woff");
+}

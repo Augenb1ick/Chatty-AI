@@ -19,7 +19,7 @@ i18n
     },
     lng: 'ru',
     fallbackLng: 'en', // если переводы на языке пользователя недоступны, то будет использоваться язык, указанный в этом поле
-    debug: false,
+    debug: false, // включение выключение дебагера
 
     // have a common namespace used around the full app
     ns: ['translations'],
