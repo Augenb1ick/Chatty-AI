@@ -152,6 +152,7 @@ const Chatbot: FC<ChatBot> = ({
         ...prevMessages,
         { role: 'assistant', content: res.content },
       ]);
+      SpeechRecognition.stopListening();
       setPrompt('');
       resetTranscript();
     } catch (error) {
@@ -197,11 +198,11 @@ const Chatbot: FC<ChatBot> = ({
               className='microBtn'
               type='button'
             ></button>
-            <button
+            {/* <button
               className='submitBtn'
               disabled={loading}
               type='submit'
-            ></button>
+            ></button> */}
           </div>
         </form>
       </div>
