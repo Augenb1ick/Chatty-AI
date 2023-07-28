@@ -4,8 +4,7 @@ import logo from '../images/logo.svg';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import doggy from '../images/dog.svg';
-//import kitty from '../images/cat.svg';
-import kitty from '../images/vinny.jpg';
+import kitty from '../images/cat.svg';
 import parrot from '../images/bird.svg';
 
 interface HeaderProps {
@@ -20,7 +19,7 @@ const Header: FC<HeaderProps> = ({
   activeProfile,
 }) => {
   const { i18n } = useTranslation();
-  const [currentLang, setCurrentLang] = useState('false');
+  const [currentLang, setCurrentLang] = useState('ru');
 
   type ImageData = {
     content: string;
@@ -52,7 +51,7 @@ const Header: FC<HeaderProps> = ({
 
   const changeLanguage = (language: string) => {
     i18n.changeLanguage(language);
-    setCurrentLang(language)
+    setCurrentLang(language);
     /*if (localStorage.getItem('i18nextLng') === 'en') {
       localStorage.removeItem('en')
       localStorage.setItem('i18nextLng', 'ru')
@@ -77,19 +76,17 @@ const Header: FC<HeaderProps> = ({
           data-lang='ru'
           className={`header__button-language ${
             currentLang === 'ru' ? 'header__button-language_active' : ''
-            }`
-          }
+          }`}
           onClick={() => changeLanguage('ru')}
         >
           RU
         </button>
-        <div className="separator">|</div>
+        <div className='separator'>|</div>
         <button
           data-lang='en'
           className={`header__button-language ${
             currentLang === 'en' ? 'header__button-language_active' : ''
-            }`
-          }
+          }`}
           onClick={() => changeLanguage('en')}
         >
           EN

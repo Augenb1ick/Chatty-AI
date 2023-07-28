@@ -2,8 +2,7 @@ import { FC } from 'react';
 import './styles/Main.css';
 import ChatBotSearch from './ChatBotSearch';
 import { useTranslation } from 'react-i18next';
-//import assistantCat from '../images/cat-main.png';
-import assistantCat from '../images/vinny.jpg';
+import assistantCat from '../images/cat-main.png';
 import assistantDog from '../images/dog-main.png';
 import assistantBird from '../images/bird-main.png';
 
