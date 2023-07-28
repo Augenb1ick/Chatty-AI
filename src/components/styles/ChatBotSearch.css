@@ -7,7 +7,6 @@
   flex-direction: row;
   align-items: center;
   border-radius: 32px;
-
   justify-content: space-between;
   box-shadow: 6px 6px 20px 0px rgba(232, 140, 155, 0.3),
     -4px -4px 20px 0px rgba(143, 202, 237, 0.3);
@@ -35,7 +34,7 @@
 .chatInput {
   color: #212121;
   background-color: transparent;
-  font-family: 'Onest';
+  font-family: 'Roboto';
   font-size: 20px;
   font-style: normal;
   font-weight: 400;

@@ -35,7 +35,7 @@ const Chatbot: FC<ChatBot> = ({
       role: 'system',
       content: `Тебя зовут ${getAssistantName(
         activeProfile
-      )}, твоя основная специализация - экперт по вопросам домашних животных`,
+      )}, твоя основная специализация - экперт по вопросам домашних животных, говори на русском языке`,
     },
   ]);
   const lastMessageRoleRef = useRef<string | null>(null);
@@ -152,6 +152,7 @@ const Chatbot: FC<ChatBot> = ({
         ...prevMessages,
         { role: 'assistant', content: res.content },
       ]);
+      SpeechRecognition.stopListening();
       setPrompt('');
       resetTranscript();
     } catch (error) {
@@ -165,7 +166,11 @@ const Chatbot: FC<ChatBot> = ({
     <div className='chat-container'>
       <div className='chat'>
         <FAQ mainFaqOpen={isFaqOpened} />
-        {listening ? <div className='bigMicro'> </div> : null}
+        {listening ? (
+          <div onClick={SpeechRecognition.stopListening} className='bigMicro'>
+            {' '}
+          </div>
+        ) : null}
         <ChatHistory activeProfile={activeProfile} chatHistory={chatHistory} />
         <form
           className={`inputArea ${loading ? 'gradient' : ''} `}
@@ -186,17 +191,18 @@ const Chatbot: FC<ChatBot> = ({
               onClick={() => {
                 if (isMicrophoneAvailable) {
                   startListening();
+                } else {
+                  handleMicroisTurnedOff();
                 }
-                handleMicroisTurnedOff();
               }}
               className='microBtn'
               type='button'
             ></button>
-            <button
+            {/* <button
               className='submitBtn'
               disabled={loading}
               type='submit'
-            ></button>
+            ></button> */}
           </div>
         </form>
       </div>

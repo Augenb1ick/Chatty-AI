@@ -28,7 +28,7 @@ const ChatBotSearch: FC<ChatBotSearch> = ({ onMicroClick, isClicked }) => {
           className='microBtn'
           type='button'
         ></button>
-        <button disabled className='submitBtn' type='submit'></button>
+        {/* <button disabled className='submitBtn' type='submit'></button> */}
       </div>
     </form>
   );
