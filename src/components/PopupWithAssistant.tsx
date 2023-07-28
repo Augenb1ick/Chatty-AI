@@ -10,7 +10,7 @@ import PopupWithForm from './PopupWithForm';
 
 type profileData = {
   image: string;
-  name: any;
+  name: string;
   active: boolean;
 };
 
