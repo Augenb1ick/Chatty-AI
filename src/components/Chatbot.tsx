@@ -33,9 +33,9 @@ const Chatbot: FC<ChatBot> = ({
   const [chatHistory, setChatHistory] = useState<Message[]>([
     {
       role: 'system',
-      content: `Тебя зовут ${getAssistantName(
+      content: `Твой стандартный язык - русский, но можешь отвечать и на других языках. Тебя зовут ${getAssistantName(
         activeProfile
-      )}, твоя основная специализация - экперт по вопросам домашних животных, говори на русском языке`,
+      )}, Ты должен отвечать только, как эксперт по вопросам домашних животных, если тебе зададут вопрос на другие темы, говори, что ты эксперт по домашним животным и можешь дать ответ только по это тематике`,
     },
   ]);
   const lastMessageRoleRef = useRef<string | null>(null);
@@ -197,6 +197,7 @@ const Chatbot: FC<ChatBot> = ({
               }}
               className='microBtn'
               type='button'
+              disabled={loading}
             ></button>
             {/* <button
               className='submitBtn'
