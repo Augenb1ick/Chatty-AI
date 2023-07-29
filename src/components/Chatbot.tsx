@@ -65,21 +65,10 @@ const Chatbot: FC<ChatBot> = ({
     }
   };
 
-  // const disableMicrophone = () => {
-  //   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-  //     navigator.mediaDevices
-  //       .getUserMedia({ audio: true })
-  //       .then((stream) => {
-  //         stream.getTracks().forEach((track) => track.stop());
-  //         console.log('Микрофон успешно отключен.');
-  //       })
-  //       .catch((error) => {
-  //         console.error('Ошибка при отключении микрофона:', error);
-  //       });
-  //   } else {
-  //     console.log('API getUserMedia не поддерживается в этом браузере.');
-  //   }
-  // };
+  const disableMicrophone = async () => {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    stream.getTracks().forEach((track) => track.stop());
+  };
 
   useEffect(() => {
     checkMicrophonePermission();
@@ -211,6 +200,7 @@ const Chatbot: FC<ChatBot> = ({
       <div
         ref={buttonRef}
         onClick={() => {
+          disableMicrophone();
           SpeechRecognition.stopListening();
           console.log('принудительно отключил микрофон');
         }}
