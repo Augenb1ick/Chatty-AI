@@ -10,36 +10,38 @@
 }
 
 .popup__AssistantButton {
-  opacity: 0.6;
+  max-height: 192px;
   padding: 0;
   border: none;
   border-radius: 50%;
   cursor: pointer;
   outline: none;
+  background: #fff;
 }
 
 .popup__AssistantButton_active {
-  /*background: url('../../assets/ellipse.svg') center no-repeat;*/
+  width: 192px;
+  height: 192px;
+  background: url('../../images/ellipse.svg') center no-repeat;
   opacity: 1 !important;
-  box-shadow: 6px 6px 20px 0px rgba(251, 223, 247, 0.5),
-    -4px -4px 20px 0px rgba(175, 219, 251, 0.5);
 }
 
 .popup__AssistantButton-image {
   border-radius: 50%;
   max-width: 100%;
   max-height: 100%;
+  padding: 12px;
   width: 168px;
   height: 168px;
   object-fit: cover;
   border-style: none;
-  background-color: #fff;
 }
 
 .popup__Assistant-name {
   text-align: center;
-
-  color: #1e1e1e;
+  margin: 0;
+  padding-top: 8px;
+  color:#1E1E1E;
   font-family: Product-Sans;
   font-size: 24px;
   font-style: normal;
