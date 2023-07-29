@@ -84,6 +84,7 @@
     height: 50px;
     background-size: cover;
     margin-top: 48px;
+    margin-bottom: 51px;
   }
 
   .main__search-container {
@@ -93,6 +94,6 @@
 
 @media screen and (max-width: 376px) {
   .main {
-    background-position: center 23px;
+    background-position: center 10px;
   }
 }
