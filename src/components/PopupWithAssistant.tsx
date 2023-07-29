@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import doggy from '../images/dog.svg';
-import activeDoggy from '../images/activeDod.svg';
 import kitty from '../images/cat.svg';
 import parrot from '../images/bird.svg';
 //import ellipse from '../images/ellipse.svg';
@@ -27,8 +26,7 @@ const PopupWithAssistant: FC<PopupWithAssistantProps> = ({
   onClose,
   activeProfile,
   onSelectedProfile,
-  }) => {
-    
+}) => {
   const { t } = useTranslation();
   const profileData: profileData[] = [
     {
@@ -38,12 +36,12 @@ const PopupWithAssistant: FC<PopupWithAssistantProps> = ({
     },
     {
       image: kitty,
-      name:  t('__Vincent__'),
+      name: t('__Vincent__'),
       active: false,
     },
     {
       image: parrot,
-      name:  t('__Gustav__'),
+      name: t('__Gustav__'),
       active: false,
     },
   ];
@@ -57,12 +55,15 @@ const PopupWithAssistant: FC<PopupWithAssistantProps> = ({
           className={`popup__AssistantButton ${
             i === activeProfile ? 'popup__AssistantButton_active' : ''
           }`}
-          key={i}
           onClick={() => onSelectedProfile(i)}
         >
-          <img className='popup__AssistantButton-image' src={tab.image} alt='изображение животного' />
+          <img
+            className='popup__AssistantButton-image'
+            src={tab.image}
+            alt='изображение животного'
+          />
         </button>
-        <p className="popup__Assistant-name">{tab.name}</p>
+        <p className='popup__Assistant-name'>{tab.name}</p>
       </div>
     );
   });
@@ -71,7 +72,7 @@ const PopupWithAssistant: FC<PopupWithAssistantProps> = ({
 
   return (
     <PopupWithForm
-      title={'Выбери своего помощника'}
+      title={t('__Choose your assistant__')}
       isOpen={isOpen}
       onClose={onClose}
     >

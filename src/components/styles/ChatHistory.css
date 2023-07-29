@@ -48,3 +48,61 @@
 .chat-message__assistant {
   background-color: #f9f8f9;
 }
+
+.assistant-imgAndName-contaner {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.assistant-name {
+  display: none;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-family: 'Roboto';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+@media screen and (max-width: 426px) {
+  .dialogHistory {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    padding-top: 10px;
+    padding-bottom: 24px;
+    gap: 16px;
+  }
+
+  .chat-message_assistant-container {
+    flex-direction: column;
+    gap: 16px;
+    margin-left: 15px;
+  }
+
+  .chat-message_user-container {
+    flex-direction: column;
+    gap: 16px;
+    margin-right: 15px;
+    margin-left: auto;
+  }
+
+  .ava {
+    max-width: 30px;
+    max-width: 30px;
+  }
+
+  .assistant-name {
+    display: block;
+  }
+
+  .chat-message {
+    font-size: 14px;
+    line-height: 18px;
+    width: 252px;
+    padding: 12px;
+    border-radius: 12px;
+  }
+}

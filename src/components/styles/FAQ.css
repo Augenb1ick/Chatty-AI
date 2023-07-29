@@ -37,7 +37,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  z-index: 10;
+  z-index: 3;
 }
 
 .FAQ__heading {
@@ -49,7 +49,7 @@
   text-align: center;
   margin: 0;
   padding: 0;
-  z-index: 10;
+  z-index: 3;
 }
 
 .FAQ__text {
@@ -63,7 +63,7 @@
   min-height: 48px;
   border-radius: 12px;
   margin: 0;
-  z-index: 10;
+  z-index: 3;
 }
 
 .FAQ__close-btn {
@@ -75,6 +75,7 @@
   position: absolute;
   right: 47px;
   top: 32px;
+  z-index: 5;
 }
 
 .FAQ__open-btn {
@@ -92,4 +93,47 @@
 .FAQ__open-btn_hidden {
   visibility: hidden;
   opacity: 0;
+}
+
+@media screen and (max-width: 426px) {
+  .FAQ__open-btn {
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    right: 15px;
+    top: 15px;
+  }
+
+  .FAQ__close-btn {
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    right: 15px;
+    top: 15px;
+  }
+
+  .FAQ__content {
+    flex-direction: column;
+    padding-top: 15px;
+    padding-bottom: 30px;
+    gap: 16px;
+  }
+
+  .FAQ__column {
+    max-width: 91.5%;
+    margin: 0 auto 0 auto;
+    gap: 8px;
+  }
+
+  .FAQ__heading {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    margin-bottom: 16px;
+  }
+  .FAQ__text {
+    font-size: 14px;
+    line-height: 18px;
+    padding: 12px 20px 12px 20px;
+  }
 }

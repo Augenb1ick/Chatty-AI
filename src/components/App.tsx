@@ -1,5 +1,4 @@
 import { FC, useState, useEffect } from 'react';
-import { useSpeechRecognition } from 'react-speech-recognition';
 import { useTranslation } from 'react-i18next';
 import Header from './Header';
 import Chatbot from './Chatbot';
@@ -21,8 +20,8 @@ const App: FC = () => {
   const [isMicroClicked, setIsMicroClicked] = useState(false);
   const [isFaqOpened, setIsFaqOpened] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-
-  const { isMicrophoneAvailable } = useSpeechRecognition();
+  const [isMicrophoneAvailable, setIsMicrophoneAvailable] =
+    useState<boolean>(true);
 
   useEffect(() => {
     const handleOnlineStatusChange = () => {
@@ -72,12 +71,29 @@ const App: FC = () => {
     setIsOpenPopupWithLimits(true);
   };
 
+  const checkMicrophonePermission = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      setIsMicrophoneAvailable(true);
+      stream.getTracks().forEach((track) => track.stop());
+    } catch (error) {
+      setIsMicrophoneAvailable(false);
+    }
+  };
+
+  useEffect(() => {
+    checkMicrophonePermission();
+  }, []);
+
   const handleMicroClick = (value: boolean) => {
-    if (!isMicrophoneAvailable) {
+    if (isMicrophoneAvailable) {
       setIsMicroClicked(value);
+      handleRerender(value);
+      return;
+    } else {
+      handlePopupMicroOpen(value);
       return;
     }
-    handlePopupMicroOpen(value);
   };
 
   const handleFaqOpen = (value: boolean) => {
@@ -120,7 +136,6 @@ const App: FC = () => {
       <PopupWithLimits
         isOpen={isOpenPopupWithLimits}
         onClose={closePopups}
-        textButton={'ПОВТОРИТЬ'}
         popupText={popupText}
         popupButtonText={popupButtonText}
         activeProfile={activeProfile}

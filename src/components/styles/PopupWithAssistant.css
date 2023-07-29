@@ -46,5 +46,25 @@
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: 32px; 
+  line-height: 32px;
+}
+
+@media screen and (max-width: 426px) {
+  .popup__AssistantButton-image {
+    width: 75px;
+    height: 75px;
+    background-size: cover;
+  }
+
+  .popup__Assistant-name {
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .popup__changeAssistant {
+    margin: 10px auto 10px auto;
+    max-width: 285px;
+    gap: 20px;
+  }
 }

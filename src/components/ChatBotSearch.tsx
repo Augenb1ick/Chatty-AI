@@ -23,7 +23,6 @@ const ChatBotSearch: FC<ChatBotSearch> = ({ onMicroClick, isClicked }) => {
         <button
           onClick={() => {
             onMicroClick(true);
-            isClicked(true);
           }}
           className='microBtn'
           type='button'

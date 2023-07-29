@@ -1,5 +1,6 @@
 .header {
   display: flex;
+  align-items: center;
   position: sticky;
   top: 0;
   z-index: 5;
@@ -10,14 +11,18 @@
     -4px -4px 20px 0px rgba(143, 202, 237, 0.3);
 }
 
-.header__link {
-  display: flex;
+.header__logo {
+  width: 141px;
+  height: 32px;
+  order: 1;
 }
 
 .header__navlang {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-left: auto;
+  order: 2;
 }
 
 .header__button-language {
@@ -64,10 +69,9 @@
 }
 
 .header__button-assistant {
+  order: 3;
   display: flex;
   background: #d9d9d9;
-  height: 60px;
-  width: 60px;
   margin-left: 24px;
   padding: 0;
   border-radius: 50%;
@@ -75,5 +79,36 @@
   cursor: pointer;
   overflow: hidden;
   -moz-border-radius: 50px;
-    -webkit-border-radius: 50px;
+  -webkit-border-radius: 50px;
+}
+
+@media screen and (max-width: 426px) {
+  .header {
+    padding: 8px 15px;
+    justify-content: space-between;
+    box-shadow: none;
+  }
+
+  .header__logo {
+    width: 105px;
+    height: 25px;
+    order: 2;
+  }
+  .header__profile-image {
+    width: 30px;
+    height: 30px;
+  }
+
+  .header__button-assistant {
+    order: 1;
+    margin: 0;
+  }
+
+  .header__navlang {
+    margin: 0;
+    order: 3;
+  }
+  .header__button-language {
+    font-size: 14px;
+  }
 }
