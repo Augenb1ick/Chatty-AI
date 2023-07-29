@@ -122,10 +122,8 @@ const Chatbot: FC<ChatBot> = ({
         { role: 'user', content: transcript },
         { role: 'system', content: enrichedData },
       ]);
-      SpeechRecognition.stopListening();
       setLoading(false);
     } catch (error) {
-      SpeechRecognition.stopListening();
       console.error('Ошибка при получении данных их поисковой выдачи', error);
       setLoading(false);
     }

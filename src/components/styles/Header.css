@@ -60,6 +60,7 @@
   display: block;
   width: 60px;
   height: 60px;
+  background-color: #ffffff;
 }
 
 .header__profile-image {
@@ -87,6 +88,7 @@
     padding: 8px 15px;
     justify-content: space-between;
     box-shadow: none;
+    position: sticky;
   }
 
   .header__logo {

@@ -19,13 +19,6 @@
   background: #fff;
 }
 
-.popup__AssistantButton_active {
-  width: 192px;
-  height: 192px;
-  background: url('../../images/ellipse.svg') center no-repeat;
-  opacity: 1 !important;
-}
-
 .popup__AssistantButton-image {
   border-radius: 50%;
   max-width: 100%;
@@ -35,13 +28,14 @@
   height: 168px;
   object-fit: cover;
   border-style: none;
+  opacity: 1 !important;
 }
 
 .popup__Assistant-name {
   text-align: center;
   margin: 0;
   padding-top: 8px;
-  color:#1E1E1E;
+  color: #1e1e1e;
   font-family: Product-Sans;
   font-size: 24px;
   font-style: normal;
@@ -51,8 +45,8 @@
 
 @media screen and (max-width: 426px) {
   .popup__AssistantButton-image {
-    width: 75px;
-    height: 75px;
+    width: 90px;
+    height: 90px;
     background-size: cover;
   }
 

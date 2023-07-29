@@ -1,15 +1,18 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import doggy from '../images/dog.svg';
-import kitty from '../images/cat.svg';
-import parrot from '../images/bird.svg';
-//import ellipse from '../images/ellipse.svg';
+import doggy from '../images/dog-not-selected.svg';
+import kitty from '../images/cat-not-selected.svg';
+import parrot from '../images/bird-not-selected.svg';
+import activeDog from '../images/dog-selected.svg';
+import activeCat from '../images/cat-selected.svg';
+import activeBird from '../images/bird-selected.svg';
 import './styles/PopupWithAssistant.css';
 import usePopupClose from '../hooks/usePopupClose';
 import PopupWithForm from './PopupWithForm';
 
 type profileData = {
   image: string;
+  activeImage: string;
   name: string;
   active: boolean;
 };
@@ -31,16 +34,19 @@ const PopupWithAssistant: FC<PopupWithAssistantProps> = ({
   const profileData: profileData[] = [
     {
       image: doggy,
+      activeImage: activeDog,
       name: t('__Oliver__'),
       active: true,
     },
     {
       image: kitty,
+      activeImage: activeCat,
       name: t('__Vincent__'),
       active: false,
     },
     {
       image: parrot,
+      activeImage: activeBird,
       name: t('__Gustav__'),
       active: false,
     },
@@ -48,7 +54,7 @@ const PopupWithAssistant: FC<PopupWithAssistantProps> = ({
 
   const profileImage = profileData.map((tab: profileData, i: number) => {
     return (
-        <div className="popup__Assistant-container" key={i}>
+      <div className='popup__Assistant-container' key={i}>
         <button
           type='button'
           aria-label='changeAssistantButton'
@@ -59,7 +65,7 @@ const PopupWithAssistant: FC<PopupWithAssistantProps> = ({
         >
           <img
             className='popup__AssistantButton-image'
-            src={tab.image}
+            src={i === activeProfile ? tab.activeImage : tab.image}
             alt='изображение животного'
           />
         </button>
