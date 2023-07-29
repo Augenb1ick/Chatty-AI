@@ -51,6 +51,22 @@ const Chatbot: FC<ChatBot> = ({
     }
   };
 
+  const disableMicrophone = () => {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices
+        .getUserMedia({ audio: true })
+        .then((stream) => {
+          stream.getTracks().forEach((track) => track.stop());
+          console.log('Микрофон успешно отключен.');
+        })
+        .catch((error) => {
+          console.error('Ошибка при отключении микрофона:', error);
+        });
+    } else {
+      console.log('API getUserMedia не поддерживается в этом браузере.');
+    }
+  };
+
   useEffect(() => {
     checkMicrophonePermission();
   }, []);
@@ -88,6 +104,7 @@ const Chatbot: FC<ChatBot> = ({
 
   useEffect(() => {
     if (chatHistory.length > 1 && lastMessageRoleRef.current !== 'assistant') {
+      disableMicrophone();
       SpeechRecognition.stopListening();
       postToGpt();
     }
