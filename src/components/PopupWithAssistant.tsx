@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import doggy from '../images/dog.svg';
-import kitty from '../images/vinny.jpg';
-//import kitty from '../images/cat.svg';
+import activeDoggy from '../images/activeDod.svg';
+import kitty from '../images/cat.svg';
 import parrot from '../images/bird.svg';
+//import ellipse from '../images/ellipse.svg';
 import './styles/PopupWithAssistant.css';
 import usePopupClose from '../hooks/usePopupClose';
 import PopupWithForm from './PopupWithForm';
@@ -49,7 +50,7 @@ const PopupWithAssistant: FC<PopupWithAssistantProps> = ({
 
   const profileImage = profileData.map((tab: profileData, i: number) => {
     return (
-        <div className="popup__Assistant-container">
+        <div className="popup__Assistant-container" key={i}>
         <button
           type='button'
           aria-label='changeAssistantButton'

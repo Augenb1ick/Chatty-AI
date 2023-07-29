@@ -4,8 +4,7 @@ import logo from '../images/logo.svg';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import doggy from '../images/dog.svg';
-//import kitty from '../images/cat.svg';
-import kitty from '../images/vinny.jpg';
+import kitty from '../images/cat.svg';
 import parrot from '../images/bird.svg';
 
 interface HeaderProps {
