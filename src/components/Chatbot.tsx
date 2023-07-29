@@ -87,6 +87,7 @@ const Chatbot: FC<ChatBot> = ({
 
   useEffect(() => {
     if (chatHistory.length > 1 && lastMessageRoleRef.current !== 'assistant') {
+      SpeechRecognition.stopListening();
       postToGpt();
     }
   }, [chatHistory, lastMessageRoleRef]);
