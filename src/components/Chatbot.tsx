@@ -25,20 +25,35 @@ const Chatbot: FC<ChatBot> = ({
 }) => {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
   const { t } = useTranslation();
-  const { transcript, listening, resetTranscript, isMicrophoneAvailable } =
-    useSpeechRecognition();
+  const { transcript, listening, resetTranscript } = useSpeechRecognition();
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isMicrophoneAvailable, setIsMicrophoneAvailable] =
+    useState<boolean>(true);
 
   const [chatHistory, setChatHistory] = useState<Message[]>([
     {
       role: 'system',
-      content: `Твой стандартный язык - русский, но можешь отвечать и на других языках. Тебя зовут ${getAssistantName(
+      content: `Тебя зовут ${getAssistantName(
         activeProfile
-      )}, Ты должен отвечать только, как эксперт по вопросам домашних животных, если тебе зададут вопрос на другие темы, говори, что ты эксперт по домашним животным и можешь дать ответ только по это тематике`,
+      )}, Ты должен отвечать только как эксперт по вопросам домашних животных, если тебе зададут вопрос на другие темы, говори, что ты эксперт по домашним животным и можешь дать ответ только по это тематике`,
     },
   ]);
   const lastMessageRoleRef = useRef<string | null>(null);
+
+  const checkMicrophonePermission = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      setIsMicrophoneAvailable(true);
+      stream.getTracks().forEach((track) => track.stop());
+    } catch (error) {
+      setIsMicrophoneAvailable(false);
+    }
+  };
+
+  useEffect(() => {
+    checkMicrophonePermission();
+  }, []);
 
   function getAssistantName(value: number) {
     switch (value) {
@@ -52,10 +67,6 @@ const Chatbot: FC<ChatBot> = ({
         return 'Оливер';
     }
   }
-
-  const handleMicroisTurnedOff = () => {
-    microIsTurnedOff(isMicrophoneAvailable);
-  };
 
   useEffect(() => {
     isMicroOn && startListening();
@@ -192,7 +203,7 @@ const Chatbot: FC<ChatBot> = ({
                 if (isMicrophoneAvailable) {
                   startListening();
                 } else {
-                  handleMicroisTurnedOff();
+                  microIsTurnedOff(true);
                 }
               }}
               className='microBtn'
