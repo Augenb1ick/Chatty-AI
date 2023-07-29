@@ -1,5 +1,4 @@
 import { FC, useState, useEffect } from 'react';
-import { useSpeechRecognition } from 'react-speech-recognition';
 import { useTranslation } from 'react-i18next';
 import Header from './Header';
 import Chatbot from './Chatbot';
