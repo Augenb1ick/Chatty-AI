@@ -142,9 +142,10 @@ const Chatbot: FC<ChatBot> = ({
         { role: 'user', content: transcript },
         { role: 'system', content: enrichedData },
       ]);
-
+      SpeechRecognition.stopListening();
       setLoading(false);
     } catch (error) {
+      SpeechRecognition.stopListening();
       console.error('Ошибка при получении обогащенных данных:', error);
       setLoading(false);
     }
@@ -166,6 +167,8 @@ const Chatbot: FC<ChatBot> = ({
 
   async function postToGpt() {
     SpeechRecognition.stopListening();
+    setPrompt('');
+    resetTranscript();
     setLoading(true);
     const APIBody = {
       model: 'gpt-3.5-turbo-0613',
@@ -196,9 +199,6 @@ const Chatbot: FC<ChatBot> = ({
         ...prevMessages,
         { role: 'assistant', content: res.content },
       ]);
-      SpeechRecognition.stopListening();
-      setPrompt('');
-      resetTranscript();
     } catch (error) {
       console.error(error);
     } finally {
