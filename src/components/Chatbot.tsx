@@ -211,7 +211,7 @@ const Chatbot: FC<ChatBot> = ({
       <div
         ref={buttonRef}
         onClick={() => {
-          SpeechRecognition.stopListening;
+          SpeechRecognition.stopListening();
           console.log('принудительно отключил микрофон');
         }}
         className='chat'
