@@ -27,21 +27,42 @@
 
 .popup__AssistantButton-image {
   border-radius: 50%;
-    max-width: 100%;
-    max-height: 100%;
-    width: 168px;
-    height: 168px;
-    object-fit: cover;
-    border-style: none;
+  max-width: 100%;
+  max-height: 100%;
+  width: 168px;
+  height: 168px;
+  object-fit: cover;
+  border-style: none;
+  background-color: #fff;
 }
 
 .popup__Assistant-name {
   text-align: center;
 
-  color:#1E1E1E;
+  color: #1e1e1e;
   font-family: Product-Sans;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: 32px; 
+  line-height: 32px;
+}
+
+@media screen and (max-width: 426px) {
+  .popup__AssistantButton-image {
+    width: 75px;
+    height: 75px;
+    background-size: cover;
+  }
+
+  .popup__Assistant-name {
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .popup__changeAssistant {
+    margin: 10px auto 10px auto;
+    max-width: 285px;
+    gap: 20px;
+  }
 }

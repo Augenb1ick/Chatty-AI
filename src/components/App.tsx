@@ -136,7 +136,6 @@ const App: FC = () => {
       <PopupWithLimits
         isOpen={isOpenPopupWithLimits}
         onClose={closePopups}
-        textButton={'ПОВТОРИТЬ'}
         popupText={popupText}
         popupButtonText={popupButtonText}
         activeProfile={activeProfile}

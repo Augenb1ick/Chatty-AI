@@ -47,14 +47,13 @@ const PopupWithAssistant: FC<PopupWithAssistantProps> = ({
 
   const profileImage = profileData.map((tab: profileData, i: number) => {
     return (
-      <div className='popup__Assistant-container'>
+      <div key={i} className='popup__Assistant-container'>
         <button
           type='button'
           aria-label='changeAssistantButton'
           className={`popup__AssistantButton ${
             i === activeProfile ? 'popup__AssistantButton_active' : ''
           }`}
-          key={i}
           onClick={() => onSelectedProfile(i)}
         >
           <img

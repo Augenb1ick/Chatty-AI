@@ -9,7 +9,6 @@ import assistantBird from '../images/bigBirdy.svg';
 interface PopupWithLimitsProps {
   isOpen: boolean;
   onClose: () => void;
-  textButton: string;
   popupText: string;
   popupButtonText: string;
   activeProfile: number;

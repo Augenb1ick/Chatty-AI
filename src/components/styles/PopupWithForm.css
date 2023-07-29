@@ -58,3 +58,21 @@
   cursor: pointer;
   outline: none;
 }
+
+@media screen and (max-width: 426px) {
+  .popup__container {
+    width: 345px;
+    padding: 12px 20px 12px 20px;
+  }
+
+  .popup__name {
+    font-size: 16px;
+    margin-left: auto;
+  }
+
+  .popup__close-button {
+    width: 20px;
+    min-height: 20px;
+    background-image: url(../../images/close-btn-mini.svg);
+  }
+}

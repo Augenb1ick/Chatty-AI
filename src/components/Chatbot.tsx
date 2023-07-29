@@ -184,12 +184,12 @@ const Chatbot: FC<ChatBot> = ({
         ) : null}
         <ChatHistory activeProfile={activeProfile} chatHistory={chatHistory} />
         <form
-          className={`inputArea ${loading ? 'gradient' : ''} `}
+          className={`inputArea inputArea-Inchat ${loading ? 'gradient' : ''} `}
           onSubmit={handleSubmit}
         >
           <input
             autoFocus
-            className='chatInput'
+            className='chatInput chatInput-inChat'
             value={
               loading ? 'Генерирую ответ...' : transcript ? transcript : prompt
             }
@@ -197,26 +197,25 @@ const Chatbot: FC<ChatBot> = ({
             onChange={handleInputChange}
             disabled={loading}
           ></input>
-          <div className='chatBtns'>
-            <button
-              onClick={() => {
-                if (isMicrophoneAvailable) {
-                  startListening();
-                } else {
-                  microIsTurnedOff(true);
-                }
-              }}
-              className='microBtn'
-              type='button'
-              disabled={loading}
-            ></button>
-            {/* <button
-              className='submitBtn'
-              disabled={loading}
-              type='submit'
-            ></button> */}
-          </div>
+          <button
+            onClick={() => {
+              if (isMicrophoneAvailable) {
+                startListening();
+              } else {
+                microIsTurnedOff(true);
+              }
+            }}
+            className='microBtn'
+            type='button'
+            disabled={loading}
+          ></button>
         </form>
+        <button
+          onClick={handleSubmit}
+          className='submitBtn'
+          disabled={loading}
+          type='submit'
+        ></button>
       </div>
     </div>
   );

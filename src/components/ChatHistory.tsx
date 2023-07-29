@@ -22,6 +22,17 @@ const ChatHistory: FC<ChatHistoryProps> = ({ chatHistory, activeProfile }) => {
 
     return avatars[value] || assistantDog;
   };
+
+  const handleAssistantName = (value: number) => {
+    const names: { [key: number]: string } = {
+      0: t('__Oliver__'),
+      1: t('__Vincent__'),
+      2: t('__Gustav__'),
+    };
+
+    return names[value] || t('__Oliver__');
+  };
+
   const userChatMessage = (message: Message, index: number) => (
     <div key={index} className='chat-message_user-container'>
       <div className='chat-message chat-message__user'>{message.content}</div>
@@ -30,7 +41,10 @@ const ChatHistory: FC<ChatHistoryProps> = ({ chatHistory, activeProfile }) => {
 
   const assistantChatMessage = (message: Message, index: number) => (
     <div key={index} className='chat-message_assistant-container'>
-      <img className='ava' src={handleAssistantAva(activeProfile)} />
+      <div className='assistant-imgAndName-contaner'>
+        <img className='ava' src={handleAssistantAva(activeProfile)} />
+        <p className='assistant-name'>{handleAssistantName(activeProfile)}</p>
+      </div>
       <div className='chat-message chat-message__assistant'>
         {message.content}
       </div>

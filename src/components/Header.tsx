@@ -63,14 +63,12 @@ const Header: FC<HeaderProps> = ({
 
   return (
     <div className='header'>
-      <Link className='header__link' to='/#'>
-        <img
-          onClick={handleLogoClick}
-          className='header__logo'
-          src={logo}
-          alt='логотип'
-        />
-      </Link>
+      <img
+        onClick={handleLogoClick}
+        className='header__logo'
+        src={logo}
+        alt='логотип'
+      />
       <div className='header__navlang'>
         <button
           data-lang='ru'
@@ -91,8 +89,8 @@ const Header: FC<HeaderProps> = ({
         >
           EN
         </button>
-        {avatar}
       </div>
+      {avatar}
     </div>
   );
 };
