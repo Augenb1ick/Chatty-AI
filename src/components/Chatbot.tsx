@@ -15,6 +15,7 @@ interface ChatBot {
   isFaqOpened: boolean;
   activeProfile: number;
   microIsTurnedOff: (value: boolean) => void;
+  isSafari: boolean;
 }
 
 const Chatbot: FC<ChatBot> = ({
@@ -22,11 +23,11 @@ const Chatbot: FC<ChatBot> = ({
   isFaqOpened,
   activeProfile,
   microIsTurnedOff,
+  isSafari,
 }) => {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
   const { t } = useTranslation();
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
-  const [isSafari, setIsSafari] = useState(false);
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
   const [isMicrophoneAvailable, setIsMicrophoneAvailable] =

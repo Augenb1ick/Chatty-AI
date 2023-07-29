@@ -19,6 +19,7 @@ const App: FC = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [isMicroClicked, setIsMicroClicked] = useState(false);
   const [isFaqOpened, setIsFaqOpened] = useState(false);
+  const [isSafari, setIsSafari] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [isMicrophoneAvailable, setIsMicrophoneAvailable] =
     useState<boolean>(true);
@@ -40,6 +41,15 @@ const App: FC = () => {
   useEffect(() => {
     !isOnline && handlePopupInternetOpen();
   }, [isOnline]);
+
+  useEffect(() => {
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    if (isSafari) {
+      setIsSafari(true);
+      console.log('Вход выполнен с браузера Safari');
+    }
+  }, []);
 
   const onSelectedProfile = (index: number) => {
     setActiveProfile(index);
@@ -116,6 +126,7 @@ const App: FC = () => {
           isMicroOn={isMicroClicked}
           isFaqOpened={isFaqOpened}
           microIsTurnedOff={handlePopupMicroOpen}
+          isSafari={isSafari}
         />
       ) : (
         <Main
