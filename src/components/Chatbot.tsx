@@ -43,14 +43,14 @@ const Chatbot: FC<ChatBot> = ({
   ]);
   const lastMessageRoleRef = useRef<string | null>(null);
 
-  useEffect(() => {
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  // useEffect(() => {
+  //   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-    if (isSafari) {
-      setIsSafari(true);
-      console.log('Вход выполнен с браузера Safari');
-    }
-  }, []);
+  //   if (isSafari) {
+  //     setIsSafari(true);
+  //     console.log('Вход выполнен с браузера Safari');
+  //   }
+  // }, []);
 
   const checkMicrophonePermission = async () => {
     try {
