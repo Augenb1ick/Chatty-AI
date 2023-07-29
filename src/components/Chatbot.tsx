@@ -25,6 +25,7 @@ const Chatbot: FC<ChatBot> = ({
 }) => {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
   const { t } = useTranslation();
+  const buttonRef = useRef(null);
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
@@ -41,6 +42,17 @@ const Chatbot: FC<ChatBot> = ({
   ]);
   const lastMessageRoleRef = useRef<string | null>(null);
 
+  useEffect(() => {
+    if (!listening) {
+      const clickEvent = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+      });
+      buttonRef.current.dispatchEvent(clickEvent);
+    }
+  }, [listening]);
+
   const checkMicrophonePermission = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -51,21 +63,21 @@ const Chatbot: FC<ChatBot> = ({
     }
   };
 
-  const disableMicrophone = () => {
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices
-        .getUserMedia({ audio: true })
-        .then((stream) => {
-          stream.getTracks().forEach((track) => track.stop());
-          console.log('Микрофон успешно отключен.');
-        })
-        .catch((error) => {
-          console.error('Ошибка при отключении микрофона:', error);
-        });
-    } else {
-      console.log('API getUserMedia не поддерживается в этом браузере.');
-    }
-  };
+  // const disableMicrophone = () => {
+  //   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  //     navigator.mediaDevices
+  //       .getUserMedia({ audio: true })
+  //       .then((stream) => {
+  //         stream.getTracks().forEach((track) => track.stop());
+  //         console.log('Микрофон успешно отключен.');
+  //       })
+  //       .catch((error) => {
+  //         console.error('Ошибка при отключении микрофона:', error);
+  //       });
+  //   } else {
+  //     console.log('API getUserMedia не поддерживается в этом браузере.');
+  //   }
+  // };
 
   useEffect(() => {
     checkMicrophonePermission();
@@ -104,7 +116,6 @@ const Chatbot: FC<ChatBot> = ({
 
   useEffect(() => {
     if (chatHistory.length > 1 && lastMessageRoleRef.current !== 'assistant') {
-      disableMicrophone();
       SpeechRecognition.stopListening();
       postToGpt();
     }
@@ -195,7 +206,14 @@ const Chatbot: FC<ChatBot> = ({
 
   return (
     <div className='chat-container'>
-      <div className='chat'>
+      <div
+        ref={buttonRef}
+        onClick={() => {
+          SpeechRecognition.stopListening;
+          console.log('принудительно отключил микрофон');
+        }}
+        className='chat'
+      >
         <FAQ mainFaqOpen={isFaqOpened} />
         {listening ? (
           <div onClick={SpeechRecognition.stopListening} className='bigMicro'>
