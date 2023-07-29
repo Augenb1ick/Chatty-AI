@@ -25,7 +25,7 @@ const Chatbot: FC<ChatBot> = ({
 }) => {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
   const { t } = useTranslation();
-  const buttonRef = useRef(null);
+  const buttonRef = useRef<HTMLDivElement | null>(null);
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
@@ -49,7 +49,9 @@ const Chatbot: FC<ChatBot> = ({
         bubbles: true,
         cancelable: true,
       });
-      buttonRef.current.dispatchEvent(clickEvent);
+      if (buttonRef.current) {
+        buttonRef.current.dispatchEvent(clickEvent);
+      }
     }
   }, [listening]);
 
