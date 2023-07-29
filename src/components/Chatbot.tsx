@@ -25,8 +25,8 @@ const Chatbot: FC<ChatBot> = ({
 }) => {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
   const { t } = useTranslation();
-  const buttonRef = useRef<HTMLDivElement | null>(null);
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
+  const [isSafari, setIsSafari] = useState(false);
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
   const [isMicrophoneAvailable, setIsMicrophoneAvailable] =
@@ -43,17 +43,13 @@ const Chatbot: FC<ChatBot> = ({
   const lastMessageRoleRef = useRef<string | null>(null);
 
   useEffect(() => {
-    if (!listening) {
-      const clickEvent = new MouseEvent('click', {
-        view: window,
-        bubbles: true,
-        cancelable: true,
-      });
-      if (buttonRef.current) {
-        buttonRef.current.dispatchEvent(clickEvent);
-      }
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    if (isSafari) {
+      setIsSafari(true);
+      console.log('Вход выполнен с браузера Safari');
     }
-  }, [listening]);
+  }, []);
 
   const checkMicrophonePermission = async () => {
     try {
@@ -63,11 +59,6 @@ const Chatbot: FC<ChatBot> = ({
     } catch (error) {
       setIsMicrophoneAvailable(false);
     }
-  };
-
-  const disableMicrophone = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    stream.getTracks().forEach((track) => track.stop());
   };
 
   useEffect(() => {
@@ -88,11 +79,15 @@ const Chatbot: FC<ChatBot> = ({
   }
 
   useEffect(() => {
-    isMicroOn && startListening();
+    if (isMicroOn) {
+      if (isSafari) {
+        SpeechRecognition.startListening({ continuous: true });
+      }
+      SpeechRecognition.startListening();
+    }
   }, [isMicroOn]);
 
   useEffect(() => {
-    console.log('слушаю?', listening);
     if (transcript && listening === false) {
       handleVoiceRecognition();
     }
@@ -111,10 +106,6 @@ const Chatbot: FC<ChatBot> = ({
       postToGpt();
     }
   }, [chatHistory, lastMessageRoleRef]);
-
-  const startListening = () => {
-    SpeechRecognition.startListening();
-  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPrompt(e.target.value);
@@ -135,7 +126,7 @@ const Chatbot: FC<ChatBot> = ({
       setLoading(false);
     } catch (error) {
       SpeechRecognition.stopListening();
-      console.error('Ошибка при получении обогащенных данных:', error);
+      console.error('Ошибка при получении данных их поисковой выдачи', error);
       setLoading(false);
     }
   };
@@ -155,7 +146,6 @@ const Chatbot: FC<ChatBot> = ({
   };
 
   async function postToGpt() {
-    SpeechRecognition.stopListening();
     setPrompt('');
     resetTranscript();
     setLoading(true);
@@ -197,19 +187,12 @@ const Chatbot: FC<ChatBot> = ({
 
   return (
     <div className='chat-container'>
-      <div
-        ref={buttonRef}
-        onClick={() => {
-          disableMicrophone();
-          SpeechRecognition.stopListening();
-          console.log('принудительно отключил микрофон');
-        }}
-        className='chat'
-      >
+      <div className='chat'>
         <FAQ mainFaqOpen={isFaqOpened} />
         {listening ? (
           <div onClick={SpeechRecognition.stopListening} className='bigMicro'>
             {' '}
+            {isSafari && <button> Нажми сюда </button>}
           </div>
         ) : null}
         <ChatHistory activeProfile={activeProfile} chatHistory={chatHistory} />
@@ -230,7 +213,10 @@ const Chatbot: FC<ChatBot> = ({
           <button
             onClick={() => {
               if (isMicrophoneAvailable) {
-                startListening();
+                if (isSafari) {
+                  SpeechRecognition.startListening({ continuous: true });
+                }
+                SpeechRecognition.startListening();
               } else {
                 microIsTurnedOff(true);
               }
