@@ -65,7 +65,7 @@
 @media screen and (max-width: 426px) {
   .main {
     background-image: url(../../images/bg-mobile.svg);
-    background-position: center -10px;
+    background-position: center -13px;
   }
 
   .main__img {
