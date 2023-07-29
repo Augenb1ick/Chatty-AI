@@ -73,6 +73,7 @@ const Chatbot: FC<ChatBot> = ({
   }, [isMicroOn]);
 
   useEffect(() => {
+    console.log('слушаю?', listening);
     if (transcript && listening === false) {
       handleVoiceRecognition();
     }
@@ -134,6 +135,7 @@ const Chatbot: FC<ChatBot> = ({
   };
 
   async function postToGpt() {
+    SpeechRecognition.stopListening();
     setLoading(true);
     const APIBody = {
       model: 'gpt-3.5-turbo-0613',
