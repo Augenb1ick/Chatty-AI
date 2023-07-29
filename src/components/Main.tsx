@@ -22,7 +22,7 @@ const Main: FC<Main> = ({
   const { t } = useTranslation();
   const handleScroll = () => {
     window.scroll({
-      top: window.innerHeight,
+      top: window.innerHeight - 80,
       behavior: 'smooth',
     });
   };

@@ -94,6 +94,6 @@
 
 @media screen and (max-width: 376px) {
   .main {
-    background-position: center 10px;
+    background-position: center -5px;
   }
 }
