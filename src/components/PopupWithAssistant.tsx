@@ -71,7 +71,7 @@ const PopupWithAssistant: FC<PopupWithAssistantProps> = ({
 
   return (
     <PopupWithForm
-      title={'Выбери своего помощника'}
+      title={t('__Choose your assistant__')}
       isOpen={isOpen}
       onClose={onClose}
     >
