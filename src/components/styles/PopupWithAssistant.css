@@ -17,6 +17,10 @@
   cursor: pointer;
   outline: none;
   background: #fff;
+  transition: none;
+}
+.popup__AssistantButton:hover {
+  opacity: 1;
 }
 
 .popup__AssistantButton-image {
@@ -28,7 +32,6 @@
   height: 168px;
   object-fit: cover;
   border-style: none;
-  opacity: 1 !important;
 }
 
 .popup__Assistant-name {

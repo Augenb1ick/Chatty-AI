@@ -43,15 +43,6 @@ const Chatbot: FC<ChatBot> = ({
   ]);
   const lastMessageRoleRef = useRef<string | null>(null);
 
-  // useEffect(() => {
-  //   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-  //   if (isSafari) {
-  //     setIsSafari(true);
-  //     console.log('Вход выполнен с браузера Safari');
-  //   }
-  // }, []);
-
   const checkMicrophonePermission = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -65,6 +56,13 @@ const Chatbot: FC<ChatBot> = ({
   useEffect(() => {
     checkMicrophonePermission();
   }, []);
+
+  const handleScroll = () => {
+    window.scroll({
+      top: document.body.scrollHeight,
+      behavior: 'smooth',
+    });
+  };
 
   function getAssistantName(value: number) {
     switch (value) {
@@ -109,6 +107,7 @@ const Chatbot: FC<ChatBot> = ({
   }, [chatHistory, lastMessageRoleRef]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleScroll();
     setPrompt(e.target.value);
   };
 
@@ -131,9 +130,11 @@ const Chatbot: FC<ChatBot> = ({
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
+    handleScroll();
     e.preventDefault();
     if (prompt.trim() !== '') {
       const enrichedData = await getSearchData(prompt);
+      handleScroll();
       setChatHistory((prevMessages) => [
         ...prevMessages,
         { role: 'user', content: prompt },
@@ -145,6 +146,7 @@ const Chatbot: FC<ChatBot> = ({
   };
 
   async function postToGpt() {
+    handleScroll();
     setPrompt('');
     resetTranscript();
     setLoading(true);
@@ -152,7 +154,7 @@ const Chatbot: FC<ChatBot> = ({
       model: 'gpt-3.5-turbo-0613',
       messages: chatHistory,
       temperature: 0,
-      max_tokens: 500,
+      max_tokens: 2000,
       top_p: 1.0,
       frequency_penalty: 0.0,
       presence_penalty: 0.0,

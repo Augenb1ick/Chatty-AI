@@ -118,6 +118,7 @@ const App: FC = () => {
         handleChangeAssistant={handleChangeAssistant}
         handleLogoClick={() => {
           setIsClicked(false);
+          setIsMicroClicked(false);
         }}
       />
       {isClicked ? (

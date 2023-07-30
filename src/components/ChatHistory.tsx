@@ -54,7 +54,10 @@ const ChatHistory: FC<ChatHistoryProps> = ({ chatHistory, activeProfile }) => {
   return (
     <div className='dialogHistory'>
       <div className='chat-message_assistant-container'>
-        <img className='ava' src={handleAssistantAva(activeProfile)} />
+        <div className='assistant-imgAndName-contaner'>
+          <img className='ava' src={handleAssistantAva(activeProfile)} />
+          <p className='assistant-name'>{handleAssistantName(activeProfile)}</p>
+        </div>
         <div className='chat-message chat-message__assistant'>
           {t('__Welcome message__')}
         </div>
