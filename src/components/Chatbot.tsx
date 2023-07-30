@@ -1,8 +1,8 @@
 import { FC, useState, useEffect, useRef } from 'react';
-import { getSearchData } from '../utills/googleSearchApi';
 import SpeechRecognition, {
   useSpeechRecognition,
 } from 'react-speech-recognition';
+import { getSearchData } from '../utills/googleSearchApi';
 import './styles/Chatbot.css';
 import './styles/ChatBotSearch.css';
 import { Message } from '../models/Message';
@@ -16,6 +16,8 @@ interface ChatBot {
   activeProfile: number;
   microIsTurnedOff: (value: boolean) => void;
   isSafari: boolean;
+  currentLanguage: string;
+  popupRecognitionOpen: (value: boolean) => void;
 }
 
 const Chatbot: FC<ChatBot> = ({
@@ -24,10 +26,17 @@ const Chatbot: FC<ChatBot> = ({
   activeProfile,
   microIsTurnedOff,
   isSafari,
+  currentLanguage,
+  popupRecognitionOpen,
 }) => {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
   const { t } = useTranslation();
-  const { transcript, listening, resetTranscript } = useSpeechRecognition();
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition,
+  } = useSpeechRecognition();
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
   const [isMicrophoneAvailable, setIsMicrophoneAvailable] =
@@ -92,12 +101,25 @@ const Chatbot: FC<ChatBot> = ({
     }
   }
 
+  const startListening = () => {
+    if (!browserSupportsSpeechRecognition) {
+      popupRecognitionOpen(true);
+    } else {
+      if (isSafari) {
+        SpeechRecognition.startListening({
+          continuous: true,
+          language: `${currentLanguage === 'ru' ? 'ru-RU' : 'en-US'}`,
+        });
+      }
+      SpeechRecognition.startListening({
+        language: `${currentLanguage === 'ru' ? 'ru-RU' : 'en-US'}`,
+      });
+    }
+  };
+
   useEffect(() => {
     if (isMicroOn) {
-      if (isSafari) {
-        SpeechRecognition.startListening({ continuous: true });
-      }
-      SpeechRecognition.startListening();
+      startListening();
     }
   }, [isMicroOn]);
 
@@ -226,10 +248,7 @@ const Chatbot: FC<ChatBot> = ({
           <button
             onClick={() => {
               if (isMicrophoneAvailable) {
-                if (isSafari) {
-                  SpeechRecognition.startListening({ continuous: true });
-                }
-                SpeechRecognition.startListening();
+                startListening();
               } else {
                 microIsTurnedOff(true);
               }

@@ -1,5 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSpeechRecognition } from 'react-speech-recognition';
 import Header from './Header';
 import Chatbot from './Chatbot';
 import Main from './Main';
@@ -11,6 +12,8 @@ import Footer from './Footer';
 
 const App: FC = () => {
   const { t } = useTranslation();
+  const { browserSupportsSpeechRecognition } = useSpeechRecognition();
+  const [currentLanguage, setCurrentLanguage] = useState('ru');
   const [isOpenAssistantPopup, setIsOpenAssistantPopup] = useState(false);
   const [isOpenPopupWithLimits, setIsOpenPopupWithLimits] = useState(false);
   const [activeProfile, setActiveProfile] = useState(0);
@@ -21,8 +24,8 @@ const App: FC = () => {
   const [isFaqOpened, setIsFaqOpened] = useState(false);
   const [isSafari, setIsSafari] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-  const [isMicrophoneAvailable, setIsMicrophoneAvailable] =
-    useState<boolean>(true);
+  const [isRecognitionAvailable, setIsRecognitionAvailable] = useState(true);
+  const [isMicrophoneAvailable, setIsMicrophoneAvailable] = useState(true);
 
   useEffect(() => {
     const handleOnlineStatusChange = () => {
@@ -67,6 +70,12 @@ const App: FC = () => {
     }
   }, []);
 
+  useEffect(() => {
+    !browserSupportsSpeechRecognition
+      ? setIsRecognitionAvailable(false)
+      : setIsRecognitionAvailable(true);
+  });
+
   const onSelectedProfile = (index: number) => {
     setActiveProfile(index);
   };
@@ -78,6 +87,10 @@ const App: FC = () => {
   const closePopups = () => {
     setIsOpenAssistantPopup(false);
     setIsOpenPopupWithLimits(false);
+  };
+
+  const handleCurrentLanguage = (value: string) => {
+    setCurrentLanguage(value);
   };
 
   const handleRerender = (value: boolean) => {
@@ -97,14 +110,24 @@ const App: FC = () => {
     setIsOpenPopupWithLimits(true);
   };
 
+  const handlePopupRecognitionOpen = (value: boolean) => {
+    setPopupText(t('__Извините, ваш браузер...__'));
+    setPopupButtonText(t('__ХОРОШО__'));
+    setIsOpenPopupWithLimits(value);
+  };
+
   const handleMicroClick = (value: boolean) => {
-    if (isMicrophoneAvailable) {
-      setIsMicroClicked(value);
-      handleRerender(value);
-      return;
+    if (!isRecognitionAvailable) {
+      handlePopupRecognitionOpen(true);
     } else {
-      handlePopupMicroOpen(value);
-      return;
+      if (isMicrophoneAvailable) {
+        setIsMicroClicked(value);
+        handleRerender(value);
+        return;
+      } else {
+        handlePopupMicroOpen(value);
+        return;
+      }
     }
   };
 
@@ -122,6 +145,7 @@ const App: FC = () => {
           setIsClicked(false);
           setIsMicroClicked(false);
         }}
+        globalLanguage={handleCurrentLanguage}
       />
       {isClicked ? (
         <Chatbot
@@ -130,6 +154,8 @@ const App: FC = () => {
           isFaqOpened={isFaqOpened}
           microIsTurnedOff={handlePopupMicroOpen}
           isSafari={isSafari}
+          currentLanguage={currentLanguage}
+          popupRecognitionOpen={handlePopupRecognitionOpen}
         />
       ) : (
         <Main

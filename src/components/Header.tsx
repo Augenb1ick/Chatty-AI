@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import './styles/Header.css';
 import logo from '../images/logo.svg';
 import { useTranslation } from 'react-i18next';
@@ -10,25 +10,27 @@ interface HeaderProps {
   handleChangeAssistant: () => void;
   handleLogoClick: () => void;
   activeProfile: number;
+  globalLanguage: (value: string) => void;
 }
+
+type ImageData = {
+  content: string;
+};
+
+const imageData: ImageData[] = [
+  { content: doggy },
+  { content: kitty },
+  { content: parrot },
+];
 
 const Header: FC<HeaderProps> = ({
   handleChangeAssistant,
   handleLogoClick,
   activeProfile,
+  globalLanguage,
 }) => {
   const { i18n } = useTranslation();
   const [currentLang, setCurrentLang] = useState('ru');
-
-  type ImageData = {
-    content: string;
-  };
-
-  const imageData: ImageData[] = [
-    { content: doggy },
-    { content: kitty },
-    { content: parrot },
-  ];
 
   const avatar: JSX.Element[] = imageData
     .filter((_tab: ImageData, i: number) => i === activeProfile)
@@ -51,6 +53,7 @@ const Header: FC<HeaderProps> = ({
   const changeLanguage = (language: string) => {
     i18n.changeLanguage(language);
     setCurrentLang(language);
+    globalLanguage(language);
     /*if (localStorage.getItem('i18nextLng') === 'en') {
       localStorage.removeItem('en')
       localStorage.setItem('i18nextLng', 'ru')
