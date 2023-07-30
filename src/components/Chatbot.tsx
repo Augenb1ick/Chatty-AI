@@ -163,7 +163,7 @@ const Chatbot: FC<ChatBot> = ({
     resetTranscript();
     setLoading(true);
     const APIBody = {
-      model: 'gpt-3.5-turbo-0613',
+      model: 'gpt-3.5-turbo',
       messages: chatHistory,
       temperature: 0,
       max_tokens: 2000,

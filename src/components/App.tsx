@@ -38,6 +38,22 @@ const App: FC = () => {
     };
   }, []);
 
+  const checkMicrophonePermission = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: true,
+      });
+      setIsMicrophoneAvailable(true);
+      stream.getTracks().forEach((track) => track.stop());
+    } catch (error) {
+      setIsMicrophoneAvailable(false);
+    }
+  };
+
+  useEffect(() => {
+    checkMicrophonePermission();
+  }, []);
+
   useEffect(() => {
     !isOnline && handlePopupInternetOpen();
   }, [isOnline]);
@@ -80,20 +96,6 @@ const App: FC = () => {
     setPopupButtonText(t('__ПОПРОБОВАТЬ ПОЗЖЕ__'));
     setIsOpenPopupWithLimits(true);
   };
-
-  const checkMicrophonePermission = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      setIsMicrophoneAvailable(true);
-      stream.getTracks().forEach((track) => track.stop());
-    } catch (error) {
-      setIsMicrophoneAvailable(false);
-    }
-  };
-
-  useEffect(() => {
-    checkMicrophonePermission();
-  }, []);
 
   const handleMicroClick = (value: boolean) => {
     if (isMicrophoneAvailable) {
