@@ -58,11 +58,26 @@ const Chatbot: FC<ChatBot> = ({
   }, []);
 
   const handleScroll = () => {
-    window.scroll({
-      top: document.body.scrollHeight,
-      behavior: 'smooth',
-    });
+    const scrollToBottom = () => {
+      window.scrollTo(0, document.body.scrollHeight);
+    };
+
+    if (document.body.scrollHeight !== window.innerHeight) {
+      scrollToBottom();
+    } else {
+      const resizeListener = () => {
+        if (document.body.scrollHeight !== window.innerHeight) {
+          scrollToBottom();
+          window.removeEventListener('resize', resizeListener);
+        }
+      };
+      window.addEventListener('resize', resizeListener);
+    }
   };
+
+  useEffect(() => {
+    handleScroll();
+  });
 
   function getAssistantName(value: number) {
     switch (value) {
@@ -107,7 +122,6 @@ const Chatbot: FC<ChatBot> = ({
   }, [chatHistory, lastMessageRoleRef]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleScroll();
     setPrompt(e.target.value);
   };
 
@@ -130,11 +144,10 @@ const Chatbot: FC<ChatBot> = ({
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    handleScroll();
     e.preventDefault();
     if (prompt.trim() !== '') {
       const enrichedData = await getSearchData(prompt);
-      handleScroll();
+
       setChatHistory((prevMessages) => [
         ...prevMessages,
         { role: 'user', content: prompt },
@@ -146,7 +159,6 @@ const Chatbot: FC<ChatBot> = ({
   };
 
   async function postToGpt() {
-    handleScroll();
     setPrompt('');
     resetTranscript();
     setLoading(true);
