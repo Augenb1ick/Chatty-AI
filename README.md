@@ -46,14 +46,14 @@ npm i
 ```
 
 3. Создайте файл с переменными окружения .env и поместите туда:
-   VITE_OPENAI_API_KEY=_your-api-key_
+   VITE*OPENAI_API_KEY=\_your-api-key*
    [Можно создать после регистрации и авторизации здесь](https://platform.openai.com/account/api-keys)
-   VITE_GOOGGLE_SEARCH_API_KEY=_your-api-key_
+   VITE*GOOGGLE_SEARCH_API_KEY=\_your-api-key*
    [Можно создать после регистрации и авторизации здесь](https://developers.google.com/custom-search/v1/overview?hl=ru)
-   VITE_GOOGGLE_SEARCH_ENGINE_ID=_your-engine-id_
+   VITE*GOOGGLE_SEARCH_ENGINE_ID=\_your-engine-id*
    [После выполнения предыдущего пункта можно получить здесь](https://programmablesearchengine.google.com/controlpanel/all)
 
-- Запустите приложение
+4. Запустите приложение
 
 ```
 npm run dev
