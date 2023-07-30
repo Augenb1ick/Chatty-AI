@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import './styles/Header.css';
 import logo from '../images/logo.svg';
 import { useTranslation } from 'react-i18next';
