@@ -217,7 +217,7 @@ const Chatbot: FC<ChatBot> = ({
             autoFocus
             className='chatInput chatInput-inChat'
             value={
-              loading ? 'Генерирую ответ...' : transcript ? transcript : prompt
+              loading ? t('__Generating__') : transcript ? transcript : prompt
             }
             placeholder={t('__Спросить ассистента...__')}
             onChange={handleInputChange}

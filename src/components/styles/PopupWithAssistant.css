@@ -55,8 +55,8 @@
 
   .popup__Assistant-name {
     font-size: 14px;
-    margin: 0;
     padding: 0;
+    margin: 0 0 0 25px;
   }
 
   .popup__changeAssistant {
