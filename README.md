@@ -45,11 +45,11 @@ git clone https://github.com/Augenb1ick/Chatty-AI.git
 npm i
 ```
 
-3. Создайте файл с переменными окружения .env и поместите туда:
+3. Создайте файл с переменными окружения .env и поместите туда:<br>
    VITE*OPENAI_API_KEY=*your-api-key*<br>
-   [Можно создать после регистрации и авторизации здесь](https://platform.openai.com/account/api-keys)
-   VITE*GOOGGLE_SEARCH_API_KEY=_your-api-key_<br>
-   [Можно создать после регистрации и авторизации здесь](https://developers.google.com/custom-search/v1/overview?hl=ru)
+   [Можно создать после регистрации и авторизации здесь](https://platform.openai.com/account/api-keys)<br>
+   VITE*GOOGGLE*SEARCH_API_KEY=\_your-api-key*<br>
+   [Можно создать после регистрации и авторизации здесь](https://developers.google.com/custom-search/v1/overview?hl=ru)<br>
    VITE*GOOGGLE_SEARCH_ENGINE_ID=*your-engine-id\*<br>
    [После выполнения предыдущего пункта можно получить здесь](https://programmablesearchengine.google.com/controlpanel/all)
 
