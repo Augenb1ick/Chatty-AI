@@ -48,7 +48,7 @@ npm i
 3. Создайте файл с переменными окружения .env и поместите туда:
 
 ```
-VITE*OPENAI_API_KEY=your-api-key
+VITE-OPENAI_API_KEY=your-api-key
 VITE-GOOGGLE-SEARCH_API_KEY=your-api-key
 VITE-GOOGGLE_SEARCH_ENGINE_ID=your-engine-id
 ```
