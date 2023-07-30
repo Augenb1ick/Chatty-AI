@@ -53,9 +53,9 @@ VITE-GOOGGLE-SEARCH_API_KEY=your-api-key
 VITE-GOOGGLE_SEARCH_ENGINE_ID=your-engine-id
 ```
 
-- [получить OpenAI API keY](https://platform.openai.com/account/api-keys)
-- [получить Google search API key](https://developers.google.com/custom-search/v1/overview?hl=ru)
-- [получить Engine ID после выполнения предыдущего пункта](https://programmablesearchengine.google.com/controlpanel/all)
+- [Получить OpenAI API key (нужна регистрация и авторизация)](https://platform.openai.com/account/api-keys)
+- [Получить Google search API key (нужна регистрация и авторизация)](https://developers.google.com/custom-search/v1/overview?hl=ru)
+- [Получить Engine ID после выполнения предыдущего пункта](https://programmablesearchengine.google.com/controlpanel/all)
 
 4. Запустите приложение
 
