@@ -9,6 +9,7 @@ import PopupWithAssistant from './PopupWithAssistant';
 import PopupWithLimits from './PopupWithLimits';
 import './styles/App.css';
 import Footer from './Footer';
+import ForWho from './ForWho';
 
 const App: FC = () => {
   const { t } = useTranslation();
@@ -166,6 +167,7 @@ const App: FC = () => {
         />
       )}
       {!isClicked ? <StepsInfo /> : null}
+      {!isClicked ? <ForWho /> : null}
       {!isClicked ? <Footer /> : null}
       <PopupWithAssistant
         activeProfile={activeProfile}

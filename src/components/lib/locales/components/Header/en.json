@@ -29,5 +29,12 @@
   "__Gustav__": "Gustav",
   "__Choose your assistant__": "Choose your assistant",
   "__Generating__": "Generating a response...",
-  "__Stop recording__": "Click here: to stop recording"
+  "__Stop recording__": "Click here: to stop recording",
+  "__ForWHo-heading__": "Our service will be useful\n if you:",
+  "__ForWHo-text-1__": "do not see the urgent need to take the pet to the vet and spend time and money on it",
+  "__ForWHo-text-2__": "you are abroad or out of town and your pet needs emergency help",
+  "__ForWHo-text-3__": "just about to get a pet but can't decide",
+  "__ForWHo-text-4__": "want to get advice on food selection and diet planning",
+  "__ForWHo-text-5__": "need a transcript or confirmation of your pet's diagnosis and prescription",
+  "__ForWHo-text-6__": "interested in animals and want to learn more about their breeds, traits and habits"
 }

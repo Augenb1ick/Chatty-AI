@@ -1,0 +1,44 @@
+.ForWho {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto 100px 10.4vw;
+  align-content: center;
+}
+
+.ForWho__info-container {
+  display: flex;
+  flex-direction: row;
+  gap: 54px;
+}
+
+.ForWho__heading {
+  color: #000;
+  font-family: 'Roboto';
+  font-size: 52px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px;
+}
+
+.ForWho__column {
+  display: flex;
+  flex-direction: column;
+  gap: 54px;
+}
+
+.ForWho__line {
+  display: flex;
+  flex-direction: row;
+  gap: 52px;
+  max-width: 530px;
+}
+
+.ForWho__text {
+  max-width: 400px;
+  color: #1e1e1e;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
