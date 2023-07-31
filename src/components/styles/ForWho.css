@@ -62,13 +62,12 @@
   .ForWho__text {
     font-size: 16px;
     line-height: 24px;
-    max-width: 285px;
   }
 
   .ForWho__img {
     width: 45px;
     height: 45px;
-    margin: auto;
+    margin: auto 0 auto 0;
   }
 
   .ForWho__line {
