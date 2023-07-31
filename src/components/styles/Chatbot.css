@@ -40,6 +40,7 @@
   padding-top: 280px;
   background: transparent;
   margin: auto;
+  border: none;
 }
 
 @media screen and (max-width: 426px) {
