@@ -17,29 +17,53 @@ const ForWho: FC = () => {
       <div className='ForWho__info-container'>
         <div className='ForWho__column'>
           <div className='ForWho__line'>
-            <img src={firstImg} alt='изображение архива' />
+            <img
+              className='ForWho__img'
+              src={firstImg}
+              alt='изображение архива'
+            />
             <p className='ForWho__text'>{t('__ForWHo-text-1__')}</p>
           </div>
           <div className='ForWho__line'>
-            <img src={secondImg} alt='изображение глобуса' />
+            <img
+              className='ForWho__img'
+              src={secondImg}
+              alt='изображение глобуса'
+            />
             <p className='ForWho__text'>{t('__ForWHo-text-2__')}</p>
           </div>
           <div className='ForWho__line'>
-            <img src={thirdImg} alt='изображение лапки' />
+            <img
+              className='ForWho__img'
+              src={thirdImg}
+              alt='изображение лапки'
+            />
             <p className='ForWho__text'>{t('__ForWHo-text-3__')}</p>
           </div>
         </div>
         <div className='ForWho__column'>
           <div className='ForWho__line'>
-            <img src={fourthImg} alt='изображение косточки' />
+            <img
+              className='ForWho__img'
+              src={fourthImg}
+              alt='изображение косточки'
+            />
             <p className='ForWho__text'>{t('__ForWHo-text-4__')}</p>
           </div>
           <div className='ForWho__line'>
-            <img src={fifthImg} alt='изображение таблеток' />
+            <img
+              className='ForWho__img'
+              src={fifthImg}
+              alt='изображение таблеток'
+            />
             <p className='ForWho__text'>{t('__ForWHo-text-5__')}</p>
           </div>
           <div className='ForWho__line'>
-            <img src={sixthImg} alt='изображение кота' />
+            <img
+              className='ForWho__img'
+              src={sixthImg}
+              alt='изображение кота'
+            />
             <p className='ForWho__text'>{t('__ForWHo-text-6__')}</p>
           </div>
         </div>
