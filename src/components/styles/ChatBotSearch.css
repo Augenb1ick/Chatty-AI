@@ -51,7 +51,7 @@
   display: none;
   width: 32px;
   height: 32px;
-  background: url(../../images/bytesize_send.svg) transparent no-repeat center;
+  background: url(../../images/submit-btn.svg) transparent no-repeat center;
   outline: none;
   border: none;
 }

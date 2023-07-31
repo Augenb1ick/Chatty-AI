@@ -227,7 +227,11 @@ const Chatbot: FC<ChatBot> = ({
         {listening ? (
           <div onClick={SpeechRecognition.stopListening} className='bigMicro'>
             {' '}
-            {isSafari && <button> Нажми сюда </button>}
+            {isSafari && (
+              <button className='stop-audio-btn'>
+                {t('__Stop recording__')}
+              </button>
+            )}
           </div>
         ) : null}
         <ChatHistory activeProfile={activeProfile} chatHistory={chatHistory} />

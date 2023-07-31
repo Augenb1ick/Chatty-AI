@@ -29,6 +29,19 @@
   display: grid;
 }
 
+.stop-audio-btn {
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  color: #7a6398;
+  max-width: 300px;
+  padding-top: 280px;
+  background: transparent;
+  margin: auto;
+}
+
 @media screen and (max-width: 426px) {
   .chat-container {
     background: #fff;
@@ -41,5 +54,12 @@
   }
   .bigMicro {
     background-size: 250px;
+  }
+  .stop-audio-btn {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    max-width: 225px;
   }
 }
