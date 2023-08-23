@@ -1,7 +1,7 @@
 .ForWho {
   display: flex;
   flex-direction: column;
-  margin: 20px auto 100px 10.4vw;
+  margin: 20px 8.4vw 100px 8.4vw;
   align-content: center;
 }
 
@@ -43,11 +43,29 @@
   line-height: 24px;
   margin: 0;
   padding: 0;
+  max-width: fit-content;
+}
+
+@media screen and (max-width: 769px) {
+  .ForWho__heading {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .ForWho__info-container {
+    gap: 20px;
+  }
+  .ForWho__line {
+    gap: 15px;
+  }
+  .ForWho__text {
+    max-width: 228px;
+  }
 }
 
 @media screen and (max-width: 426px) {
   .ForWho {
-    margin: 10px 15px 60px 15px;
+    margin: 10px 40px 60px 40px;
     align-content: center;
   }
   .ForWho__info-container {
@@ -64,6 +82,7 @@
   .ForWho__text {
     font-size: 16px;
     line-height: 24px;
+    max-width: fit-content;
   }
 
   .ForWho__img {
@@ -72,9 +91,6 @@
     margin: auto 0 auto 0;
   }
 
-  .ForWho__line {
-    gap: 15px;
-  }
   .ForWho__column {
     gap: 32px;
   }

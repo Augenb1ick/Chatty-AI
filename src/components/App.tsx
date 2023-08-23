@@ -67,7 +67,6 @@ const App: FC = () => {
 
     if (isSafari) {
       setIsSafari(true);
-      console.log('Вход выполнен с браузера Safari');
     }
   }, []);
 

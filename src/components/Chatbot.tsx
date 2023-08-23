@@ -2,25 +2,22 @@ import { FC, useState, useEffect, useRef } from 'react';
 import SpeechRecognition, {
   useSpeechRecognition,
 } from 'react-speech-recognition';
+
 import { getSearchData } from '../utills/googleSearchApi';
-import './styles/Chatbot.css';
-import './styles/ChatBotSearch.css';
-import { Message } from '../models/Message';
-import ChatHistory from './ChatHistory';
+import { Message } from '../models/dataTypes';
 import { useTranslation } from 'react-i18next';
+import { useAssistantName } from '../utills/assistantUtills';
+import { initOpenAiPromt, apiKey } from '../utills/constants';
+import { handleScroll } from '../utills/handleScroll';
+import { ChatBotProps } from '../models/componentsInterfaces';
+
+import ChatHistory from './ChatHistory';
 import FAQ from './FAQ';
 
-interface ChatBot {
-  isMicroOn: boolean;
-  isFaqOpened: boolean;
-  activeProfile: number;
-  microIsTurnedOff: (value: boolean) => void;
-  isSafari: boolean;
-  currentLanguage: string;
-  popupRecognitionOpen: (value: boolean) => void;
-}
+import './styles/Chatbot.css';
+import './styles/ChatBotSearch.css';
 
-const Chatbot: FC<ChatBot> = ({
+const Chatbot: FC<ChatBotProps> = ({
   isMicroOn,
   isFaqOpened,
   activeProfile,
@@ -29,28 +26,28 @@ const Chatbot: FC<ChatBot> = ({
   currentLanguage,
   popupRecognitionOpen,
 }) => {
-  const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
   const { t } = useTranslation();
+
   const {
     transcript,
     listening,
     resetTranscript,
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
+
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
-  const [isMicrophoneAvailable, setIsMicrophoneAvailable] =
-    useState<boolean>(true);
+  const [isMicrophoneAvailable, setIsMicrophoneAvailable] = useState(true);
+  const lastMessageRoleRef = useRef<string | null>(null);
+
+  const assistantName = useAssistantName(activeProfile);
 
   const [chatHistory, setChatHistory] = useState<Message[]>([
     {
       role: 'system',
-      content: `Тебя зовут ${getAssistantName(
-        activeProfile
-      )}, Ты должен отвечать только как эксперт по вопросам домашних животных, если тебе зададут вопрос на другие темы, говори, что ты эксперт по домашним животным и можешь дать ответ только по это тематике`,
+      content: 'Тебя зовут' + assistantName + initOpenAiPromt,
     },
   ]);
-  const lastMessageRoleRef = useRef<string | null>(null);
 
   const checkMicrophonePermission = async () => {
     try {
@@ -66,40 +63,9 @@ const Chatbot: FC<ChatBot> = ({
     checkMicrophonePermission();
   }, []);
 
-  const handleScroll = () => {
-    const scrollToBottom = () => {
-      window.scrollTo(0, document.body.scrollHeight);
-    };
-
-    if (document.body.scrollHeight !== window.innerHeight) {
-      scrollToBottom();
-    } else {
-      const resizeListener = () => {
-        if (document.body.scrollHeight !== window.innerHeight) {
-          scrollToBottom();
-          window.removeEventListener('resize', resizeListener);
-        }
-      };
-      window.addEventListener('resize', resizeListener);
-    }
-  };
-
   useEffect(() => {
     handleScroll();
   });
-
-  function getAssistantName(value: number) {
-    switch (value) {
-      case 0:
-        return 'Оливер';
-      case 1:
-        return 'Винсет';
-      case 2:
-        return 'Густав';
-      default:
-        return 'Оливер';
-    }
-  }
 
   const startListening = () => {
     if (!browserSupportsSpeechRecognition) {

@@ -2,40 +2,17 @@ import { FC } from 'react';
 import './styles/Main.css';
 import ChatBotSearch from './ChatBotSearch';
 import { useTranslation } from 'react-i18next';
-import assistantCat from '../images/cat-main.png';
-import assistantDog from '../images/dog-main.png';
-import assistantBird from '../images/bird-main.png';
+import { MainProps } from '../models/componentsInterfaces';
+import { handleAssistantAva } from '../utills/assistantUtills';
+import { handleMainScroll } from '../utills/handleScroll';
 
-interface Main {
-  onMicroClick: (value: boolean) => void;
-  isClicked: (value: boolean) => void;
-  isFaqOpened: (value: boolean) => void;
-  activeProfile: number;
-}
-
-const Main: FC<Main> = ({
+const Main: FC<MainProps> = ({
   onMicroClick,
   isClicked,
   isFaqOpened,
   activeProfile,
 }) => {
   const { t } = useTranslation();
-  const handleScroll = () => {
-    window.scroll({
-      top: window.innerHeight + 250,
-      behavior: 'smooth',
-    });
-  };
-
-  const handleAssistantAva = (value: number) => {
-    const avatars: { [key: number]: string } = {
-      0: assistantDog,
-      1: assistantCat,
-      2: assistantBird,
-    };
-
-    return avatars[value] || assistantDog;
-  };
 
   return (
     <div className='main'>
@@ -53,7 +30,7 @@ const Main: FC<Main> = ({
       >
         {t('__Узнай больше...__')}
       </button>
-      <button onClick={handleScroll} className='main__down-button'></button>
+      <button onClick={handleMainScroll} className='main__down-button'></button>
     </div>
   );
 };

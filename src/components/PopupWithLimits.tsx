@@ -1,18 +1,10 @@
 import { FC } from 'react';
 import usePopupClose from '../hooks/usePopupClose';
 import PopupWithForm from './PopupWithForm';
-import './styles/PopupWithLimits.css';
-import assistantCat from '../images/BigKitty.svg';
-import assistantDog from '../images/bigDoggy.svg';
-import assistantBird from '../images/bigBirdy.svg';
+import { PopupWithLimitsProps } from '../models/componentsInterfaces';
+import { handleAssistantAva } from '../utills/assistantUtills';
 
-interface PopupWithLimitsProps {
-  isOpen: boolean;
-  onClose: () => void;
-  popupText: string;
-  popupButtonText: string;
-  activeProfile: number;
-}
+import './styles/PopupWithLimits.css';
 
 const PopupWithLimits: FC<PopupWithLimitsProps> = ({
   isOpen,
@@ -22,16 +14,6 @@ const PopupWithLimits: FC<PopupWithLimitsProps> = ({
   activeProfile,
 }) => {
   usePopupClose(isOpen, onClose);
-
-  const handleAssistantAva = (value: number) => {
-    const avatars: { [key: number]: string } = {
-      0: assistantDog,
-      1: assistantCat,
-      2: assistantBird,
-    };
-
-    return avatars[value] || assistantDog;
-  };
 
   return (
     <PopupWithForm title={''} isOpen={isOpen} onClose={onClose}>

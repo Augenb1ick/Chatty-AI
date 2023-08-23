@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import logo from '../images/logo.svg';
 import { useTranslation } from 'react-i18next';
+
+import logo from '../images/logo.svg';
 import './styles/Footer.css';
 
 const Footer: FC = () => {
@@ -16,6 +17,8 @@ const Footer: FC = () => {
         <a
           href='https://github.com/Augenb1ick/Chatty-AI'
           className='footer__text_contacts'
+          target='_blank'
+          rel='noreferrer'
         >
           GitHub
         </a>

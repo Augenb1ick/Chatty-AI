@@ -1,13 +1,11 @@
 import { FC } from 'react';
-import './styles/ChatBotSearch.css';
+
 import { useTranslation } from 'react-i18next';
+import { ChatBotSearchProps } from '../models/componentsInterfaces';
 
-interface ChatBotSearch {
-  isClicked: (value: boolean) => void;
-  onMicroClick: (value: boolean) => void;
-}
+import './styles/ChatBotSearch.css';
 
-const ChatBotSearch: FC<ChatBotSearch> = ({ onMicroClick, isClicked }) => {
+const ChatBotSearch: FC<ChatBotSearchProps> = ({ onMicroClick, isClicked }) => {
   const { t } = useTranslation();
 
   return (
@@ -27,7 +25,6 @@ const ChatBotSearch: FC<ChatBotSearch> = ({ onMicroClick, isClicked }) => {
           className='microBtn'
           type='button'
         ></button>
-        {/* <button disabled className='submitBtn' type='submit'></button> */}
       </div>
     </form>
   );

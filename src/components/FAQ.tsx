@@ -1,12 +1,10 @@
 import { FC, useEffect, useState } from 'react';
-import './styles/FAQ.css';
 import { useTranslation } from 'react-i18next';
+import { FAQProps } from '../models/componentsInterfaces';
 
-interface FAQ {
-  mainFaqOpen: boolean;
-}
+import './styles/FAQ.css';
 
-const FAQ: FC<FAQ> = ({ mainFaqOpen }) => {
+const FAQ: FC<FAQProps> = ({ mainFaqOpen }) => {
   const { t } = useTranslation();
   const [faqIsOpened, setFaqIsOpened] = useState(false);
 
@@ -50,4 +48,5 @@ const FAQ: FC<FAQ> = ({ mainFaqOpen }) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default FAQ;

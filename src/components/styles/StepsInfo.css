@@ -39,6 +39,13 @@
   align-self: flex-start;
 }
 
+@media screen and (max-width: 769px) {
+  .stepsInfo__MainDescription {
+    font-size: 30px;
+    line-height: 36px;
+  }
+}
+
 @media screen and (max-width: 426px) {
   .stepsInfo {
     display: flex;
@@ -78,86 +85,3 @@
     margin-top: 32px;
   }
 }
-
-/*.stepsInfo__arrow{
-  justify-self: center;
-  max-width: 96px;
-  padding: 0;
-  margin: 0;
-
-  border: none;
-  cursor: pointer;
-  outline: none;
-}*/
-
-/* .stepsInfo__points-steps {
-  display: flex;
-  background: url('../../images/curve-line.svg') no-repeat;
-  background-position: bottom 70px left 105px;
-  background-size: 873px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-} */
-
-/*.stepsInfo__curve-line {
-  position: absolute;
-  max-width: 873px;
-  margin-left: 97px;
-  z-index: 0;
-}*/
-
-/* .stepsInfo__points-step {
-  display: grid;
-  justify-content: center;
-  flex-direction: column;
-  width: 270px;
-}
-
-.stepsInfo__points-step:nth-child(2n + 1) {
-  margin-top: 85px;
-}
-
-.stepsInfo__points-step:nth-child(2n) {
-  margin-bottom: 64px;
-}
-
-.stepsInfo__ellipse {
-  display: flex;
-  justify-content: center;
-  justify-self: center;
-  align-items: center;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 6px 6px 20px 0px rgba(232, 140, 155, 0.3),
-    -4px -4px 20px 0px rgba(143, 202, 237, 0.3);
-
-  color: #000;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 48px;
-} */
-
-/* @media screen and (max-width: 1370px) {
-  .stepsInfo__points-steps {
-    background-size: 800px;
-  }
-}
-
-@media screen and (max-width: 1290px) {
-  .stepsInfo__points-steps {
-    background-size: 720px;
-  }
-}
-
-@media screen and (max-width: 1230px) {
-  .stepsInfo__points-steps {
-    background-size: 65 0px;
-  }
-} */

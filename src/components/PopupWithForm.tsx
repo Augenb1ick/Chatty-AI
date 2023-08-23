@@ -1,13 +1,9 @@
-import './styles/PopupWithForm.css';
-import usePopupClose from '../hooks/usePopupClose';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+import { PopupWithFormProps } from '../models/componentsInterfaces';
 
-interface PopupWithFormProps {
-  title: string;
-  isOpen: boolean;
-  onClose: () => void;
-  children: JSX.Element;
-}
+import usePopupClose from '../hooks/usePopupClose';
+
+import './styles/PopupWithForm.css';
 
 const PopupWithForm: FC<PopupWithFormProps> = ({
   title,
