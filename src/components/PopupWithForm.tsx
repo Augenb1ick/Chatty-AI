@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { PopupWithFormProps } from '../models/componentsInterfaces';
 
 import usePopupClose from '../hooks/usePopupClose';
